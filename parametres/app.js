@@ -2,13 +2,13 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 /* ⚠️ ASSOMPTIONS À VÉRIFIER AVEC SÉBASTIEN — aucun modèle "paramètres" ne m'a été fourni,
    cette page est construite à partir des conventions déjà établies dans le réseau Lakou :
-   - Table partagée "profiles" (id, full_name, avatar_url, role).
-   - Bucket storage "avatars" pour les photos de profil.
-   - Edge function "delete-account" réutilisée telle quelle (déjà utilisée ailleurs dans Lakou Enjenyè).
-   Ajuster ces noms si la convention réelle diffère. */
+   - Table partagée "profiles" (id, full_name, avatar_url, role) — à confirmer, sinon "civil_profiles".
+   - Bucket storage "civils-upload", dossier "avatars/{user_id}/..." pour les photos de profil.
+   - Edge function "delete-account" réutilisée telle quelle (déjà utilisée ailleurs dans Lakou Enjenyè)
+     — à recréer sur ce projet Supabase si elle n'existe pas encore ici. */
 
-const SUPABASE_URL = 'https://bblhqjdymssqhfbwoxie.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_7PbAzInao2xZLI85BP42XA_nAlnxcQL';
+const SUPABASE_URL = 'https://vvizvjmvesjenuetsxyq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_6vv-OVHoOw2xCbKTbEOp8g_nRqdP7wc';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
@@ -80,6 +80,7 @@ avatarInput.addEventListener('change', (e) => {
   avatarPreview.src = URL.createObjectURL(file);
   avatarStatus.textContent = file.name;
 });
+
 // ===================== PROFIL : SOUMISSION =====================
 profileForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -91,8 +92,8 @@ profileForm.addEventListener('submit', async (e) => {
   let avatarUrl = null;
 
   if (pendingAvatarFile) {
-    const path = `${currentUser.id}/${Date.now()}_${pendingAvatarFile.name}`;
-    const { error: uploadError } = await supabase.storage.from('avatars').upload(path, pendingAvatarFile, { upsert: true });
+    const path = `avatars/${currentUser.id}/${Date.now()}_${pendingAvatarFile.name}`;
+    const { error: uploadError } = await supabase.storage.from('civils-upload').upload(path, pendingAvatarFile, { upsert: true });
     if (uploadError) {
       profileError.textContent = 'Erreur upload photo : ' + uploadError.message;
       profileError.hidden = false;
@@ -100,7 +101,7 @@ profileForm.addEventListener('submit', async (e) => {
       profileSubmitBtn.textContent = 'Enregistrer';
       return;
     }
-    const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(path);
+    const { data: urlData } = supabase.storage.from('civils-upload').getPublicUrl(path);
     avatarUrl = urlData.publicUrl;
   }
 
