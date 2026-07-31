@@ -1,0 +1,523 @@
+:root{
+  --concrete: #46413b;
+  --concrete-dark: #211d1a;
+  --concrete-panel: #2c2723;
+  --mortar: rgba(255,255,255,0.06);
+  --rust: #b5502e;
+  --safety: #e3a72e;
+  --steel: #a49c8f;
+  --paper: #ece6da;
+  --ink: #16130f;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+/* ===================== FOND — MUR DE BLOCS ===================== */
+body{
+  background-color: var(--concrete-dark);
+  background-image:
+    linear-gradient(var(--mortar) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mortar) 1px, transparent 1px);
+  background-size: 82px 40px;
+  font-family: 'Archivo', sans-serif;
+  color: var(--paper);
+  min-height: 100vh;
+}
+/* décalage type "appareillage" d'un rang sur deux */
+body::after{
+  content:'';
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(90deg, var(--mortar) 1px, transparent 1px);
+  background-size: 82px 80px;
+  background-position: 41px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Coins d'angle — équerre de chantier */
+.frame::before, .frame::after{
+  content:'';
+  position: fixed;
+  width: 16px; height: 16px;
+  border: 2px solid var(--safety);
+  opacity: .55;
+  z-index: 5;
+}
+.frame::before{ top: 20px; left: 20px; border-right:none; border-bottom:none; }
+.frame::after{ bottom: 20px; right: 20px; border-left:none; border-top:none; }
+
+/* ===================== LISERÉ TREILLIS ===================== */
+.lakou-network-bar{
+  position: relative;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .5px;
+  color: var(--steel);
+  padding: 10px 8vw;
+  display: flex;
+  gap: 8px;
+  background: var(--concrete-panel);
+  border-bottom: 3px solid transparent;
+  border-image: repeating-linear-gradient(115deg, var(--rust) 0 14px, var(--safety) 14px 28px) 3;
+}
+.lakou-network-bar a{ color: var(--steel); text-decoration: none; }
+.lakou-network-bar a:hover{ color: var(--safety); }
+.lakou-current{ color: var(--paper); }
+
+/* ===================== NAV (structure partagée, couleurs locales) ===================== */
+.nav-logo-mark{
+  background: var(--rust);
+  color: var(--paper);
+}
+.nav-cta{ color: var(--safety) !important; }
+.nav-cta-outline{ border-color: var(--safety) !important; color: var(--safety) !important; }
+
+/* ===================== HEADER ===================== */
+.site-header{
+  position: relative;
+  padding: 48px 8vw 24px;
+  z-index: 1;
+}
+
+.back-link{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--steel);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color .2s ease;
+}
+.back-link:hover{ color: var(--safety); }
+
+.eyebrow{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--safety);
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pulley-icon{
+  width: 26px; height: 26px;
+  color: var(--rust);
+  animation: pulley-turn 6s linear infinite;
+  transform-origin: 20px 14px;
+}
+@keyframes pulley-turn{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+h1{
+  font-family: 'Oswald', 'Archivo', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 14px;
+  letter-spacing: 1px;
+}
+h1 span{ color: var(--rust); }
+
+.subhead{
+  max-width: 560px;
+  margin-top: 16px;
+  color: var(--steel);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.scale-note{
+  font-family:'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--steel);
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+
+/* ===================== BARRE DE FILTRES ===================== */
+.filters-bar{
+  position: relative;
+  z-index: 1;
+  margin: 0 8vw 40px;
+  padding: 20px 24px;
+  border: 1px solid var(--mortar);
+  background: rgba(0,0,0,0.18);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.filter-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-group span{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--steel);
+  text-transform: uppercase;
+}
+
+.filter-group select,
+.filter-group input{
+  background: var(--concrete-dark);
+  border: 1px solid var(--mortar);
+  color: var(--paper);
+  padding: 10px 12px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus{
+  outline: none;
+  border-color: var(--safety);
+}
+
+/* ===================== SECTIONS ===================== */
+main{ position: relative; z-index: 1; padding: 0 8vw 100px; }
+
+.section-label{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--steel);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.section-label.small{ font-size: 11px; margin-bottom: 18px; }
+.section-label .num{ color: var(--rust); }
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--mortar), transparent);
+}
+
+/* ===================== GRILLE DE PROJETS ===================== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.loading-msg, .empty-msg{
+  font-family: 'Space Mono', monospace;
+  color: var(--steel);
+  font-size: 13px;
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.project-card{
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+  border: 1px solid var(--mortar);
+  cursor: pointer;
+  display:flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color .25s ease, transform .25s ease;
+}
+
+/* rivets — coins de plaque d'acier boulonnée */
+.project-card::before, .project-card::after{
+  content:'';
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--steel);
+  top: 8px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+  z-index: 2;
+}
+.project-card::before{ left: 8px; }
+.project-card::after{ right: 8px; }
+
+.project-card:hover{
+  border-color: var(--rust);
+  transform: translateY(-4px);
+}
+
+.project-card .cover{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: var(--concrete);
+  display: block;
+}
+
+.project-card .card-body{
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.project-card .card-eyebrow{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--steel);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.project-card h3{
+  font-family: 'Oswald', 'Archivo', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+
+.project-card .card-desc{
+  color: var(--steel);
+  font-size: .88rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.project-card .card-meta{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--safety);
+  border-top: 1px dashed var(--mortar);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===================== MODALE ===================== */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.85);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.modal-overlay[hidden]{ display: none; }
+
+.modal-card{
+  background: var(--concrete-panel);
+  border: 1px solid var(--rust);
+  max-width: 720px;
+  width: 100%;
+  padding: 36px;
+  position: relative;
+}
+
+.modal-close{
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: 1px solid var(--mortar);
+  color: var(--paper);
+  width: 32px; height: 32px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: border-color .2s ease;
+}
+.modal-close:hover{ border-color: var(--safety); }
+
+.modal-header{
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.modal-cover{
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  background: var(--concrete);
+  border: 1px solid var(--mortar);
+}
+
+.modal-title-block{ flex: 1; min-width: 220px; }
+
+.modal-eyebrow{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--safety);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.modal-title-block h2{
+  font-family: 'Oswald', 'Archivo', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modal-title-block p{
+  color: var(--steel);
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+/* ===================== INTERVENANTS ===================== */
+.intervenants-block{ margin-bottom: 32px; }
+
+.intervenants-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  border: 1px solid var(--mortar);
+  padding: 18px 20px;
+  background: rgba(181,80,46,0.05);
+}
+
+.intervenant-item{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ===================== FICHE TECHNIQUE ===================== */
+.spec-sheet{ margin-bottom: 32px; }
+
+.spec-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  border: 1px dashed var(--mortar);
+  padding: 20px;
+}
+
+.spec-item{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spec-label{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.spec-value{
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.spec-value.link{
+  color: var(--safety);
+  text-decoration: none;
+}
+.spec-value.link:hover{ text-decoration: underline; }
+
+/* ===================== LIVRABLES ===================== */
+.deliverables-list{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deliverable-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid var(--mortar);
+  font-size: .88rem;
+}
+
+.deliverable-item .step-name{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deliverable-item .step-num{
+  font-family: 'Space Mono', monospace;
+  color: var(--steel);
+  font-size: 11px;
+}
+
+.deliverable-item .status{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .5px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+
+.status.validated{
+  color: var(--safety);
+  border: 1px solid var(--safety);
+}
+
+.status.pending{
+  color: var(--steel);
+  border: 1px solid var(--mortar);
+}
+
+/* ===================== FICHE (CARTES ACCUEIL RÉSEAU) ===================== */
+.card-facts{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 4px 0 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--mortar);
+}
+.card-facts .fact{ display: flex; flex-direction: column; gap: 3px; }
+.card-facts dt{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--safety);
+}
+.card-facts dd{ font-size: .85rem; line-height: 1.55; color: var(--steel); }
+
+/* ===================== FOOTER ===================== */
+footer{
+  position: relative;
+  z-index: 1;
+  padding: 28px 8vw 48px;
+  font-family:'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--steel);
+  letter-spacing: 1px;
+  display:flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--mortar);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px){
+  .filters-bar{ flex-direction: column; }
+  .modal-header{ flex-direction: column; }
+  .modal-cover{ width: 100%; height: 180px; }
+}
