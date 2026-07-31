@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Génie Civil — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Génie Civil</span>
+  </div>
+
+  <!-- ===================== MENU GLOBAL — LAKOU GÉNIE CIVIL ===================== -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/confidentialite/index.html" class="nav-link">Confidentialité & CGU</a>
+
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+  <!-- ===================== FIN MENU GLOBAL ===================== -->
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <a href="https://lakou-enjenye26.vercel.app/" class="back-link">← Toutes les branches</a>
+
+    <div class="eyebrow">
+      <svg class="pulley-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="14" r="8" stroke="currentColor" stroke-width="2"/>
+        <circle cx="20" cy="14" r="2.3" fill="currentColor"/>
+        <path d="M12 14 Q6 14 6 22 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M28 14 Q34 14 34 22 L34 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Lakou Enjenyè — Archive Technique
+    </div>
+
+    <h1>Génie <span>Civil</span></h1>
+    <p class="subhead">Structures, bâtiments, ponts et infrastructures routières. Projets validés par les enseignants des facultés d'ingénierie d'Haïti.</p>
+    <div class="scale-note" id="project-count">— chargement des projets —</div>
+  </header>
+
+  <!-- ===================== BARRE DE FILTRES ===================== -->
+  <section class="filters-bar" id="filters-bar">
+    <label class="filter-group">
+      <span>École</span>
+      <select id="filter-school">
+        <option value="">Toutes</option>
+      </select>
+    </label>
+
+    <label class="filter-group">
+      <span>Type de structure</span>
+      <select id="filter-structure">
+        <option value="">Tous</option>
+        <option value="béton armé">Béton armé</option>
+        <option value="acier">Acier</option>
+        <option value="bois">Bois</option>
+      </select>
+    </label>
+
+    <label class="filter-group">
+      <span>Recherche</span>
+      <input type="text" id="filter-search" placeholder="Titre du projet...">
+    </label>
+  </section>
+
+  <!-- ===================== GRILLE DE PROJETS ===================== -->
+  <main>
+    <div class="section-label"><span class="num">§01</span> Projets archivés</div>
+
+    <div class="grid" id="projects-grid">
+      <p class="loading-msg" id="loading-msg">Chargement des projets validés...</p>
+      <p class="empty-msg" id="empty-msg" hidden>Aucun projet ne correspond à ces critères.</p>
+    </div>
+  </main>
+
+  <!-- ===================== MODALE DÉTAIL PROJET ===================== -->
+  <div class="modal-overlay" id="project-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+
+      <div class="modal-header">
+        <img src="" alt="" id="modal-cover" class="modal-cover">
+        <div class="modal-title-block">
+          <div class="modal-eyebrow" id="modal-school">—</div>
+          <h2 id="modal-title">Titre du projet</h2>
+          <p id="modal-description">Description du projet.</p>
+        </div>
+      </div>
+
+      <div class="intervenants-block">
+        <div class="section-label small"><span class="num">§02</span> Intervenants</div>
+        <div class="intervenants-grid">
+          <div class="intervenant-item">
+            <span class="spec-label">Étudiant</span>
+            <span class="spec-value" id="modal-student">—</span>
+          </div>
+          <div class="intervenant-item">
+            <span class="spec-label">Validé par</span>
+            <span class="spec-value" id="modal-validator">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-sheet">
+        <div class="section-label small"><span class="num">§03</span> Fiche technique</div>
+        <div class="spec-grid">
+          <div class="spec-item">
+            <span class="spec-label">Type de structure</span>
+            <span class="spec-value" id="spec-type-structure">—</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Charge admissible</span>
+            <span class="spec-value" id="spec-charge">—</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Résistance du sol</span>
+            <span class="spec-value" id="spec-resistance-sol">—</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Surface</span>
+            <span class="spec-value" id="spec-surface">—</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Norme appliquée</span>
+            <span class="spec-value" id="spec-norme">—</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Plan technique</span>
+            <a href="#" id="spec-plan-link" target="_blank" class="spec-value link">Voir le plan →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="deliverables-block">
+        <div class="section-label small"><span class="num">§04</span> Livrables</div>
+        <ol class="deliverables-list" id="deliverables-list"></ol>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.01</span>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+  <script src="shared/nav.js" defer></script>
+</body>
+</html>
