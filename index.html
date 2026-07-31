@@ -19,163 +19,219 @@
     <span class="lakou-current">Génie Civil</span>
   </div>
 
-  <!-- ===================== MENU GLOBAL — LAKOU GÉNIE CIVIL ===================== -->
   <nav class="main-nav" id="main-nav">
     <div class="nav-inner">
-
       <a href="/index.html" class="nav-logo">
         <span class="nav-logo-mark">LGC</span>
         <span class="nav-logo-text">Lakou Génie Civil</span>
       </a>
-
       <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-
       <div class="nav-links" id="nav-links">
-
-        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
         <a href="/articles/index.html" class="nav-link">Articles</a>
         <a href="/a-propos/index.html" class="nav-link">À propos</a>
-        <a href="/confidentialite/index.html" class="nav-link">Confidentialité & CGU</a>
-
         <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
-
         <div class="nav-auth-zone" id="nav-auth-zone">
           <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
           <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
         </div>
-
       </div>
     </div>
   </nav>
-  <!-- ===================== FIN MENU GLOBAL ===================== -->
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <a href="https://lakou-enjenye26.vercel.app/" class="back-link">← Toutes les branches</a>
-
-    <div class="eyebrow">
-      <svg class="pulley-icon" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="14" r="8" stroke="currentColor" stroke-width="2"/>
-        <circle cx="20" cy="14" r="2.3" fill="currentColor"/>
-        <path d="M12 14 Q6 14 6 22 L6 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 14 Q34 14 34 22 L34 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- ===================== HERO — DÉFINITION DE LA FILIÈRE ===================== -->
+  <header class="hero">
+    <div class="gauge" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" class="gauge-ring"/>
+        <circle cx="50" cy="50" r="42" class="gauge-ticks"/>
+        <line x1="50" y1="50" x2="50" y2="16" class="gauge-needle"/>
+        <circle cx="50" cy="50" r="4" class="gauge-hub"/>
       </svg>
-      Lakou Enjenyè — Archive Technique
     </div>
 
+    <div class="eyebrow">Lakou Enjenyè — Filière</div>
     <h1>Génie <span>Civil</span></h1>
-    <p class="subhead">Structures, bâtiments, ponts et infrastructures routières. Projets validés par les enseignants des facultés d'ingénierie d'Haïti.</p>
-    <div class="scale-note" id="project-count">— chargement des projets —</div>
+    <p class="lede">
+      La discipline qui porte le pays sur ses fondations : bâtiments, ponts, routes,
+      réseaux d'eau. Chaque structure debout après un séisme ou un cyclone est une
+      démonstration de calcul juste — chaque structure effondrée, une leçon qu'on
+      n'a pas le droit d'oublier.
+    </p>
   </header>
 
-  <!-- ===================== BARRE DE FILTRES ===================== -->
-  <section class="filters-bar" id="filters-bar">
-    <label class="filter-group">
-      <span>École</span>
-      <select id="filter-school">
-        <option value="">Toutes</option>
-      </select>
-    </label>
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
 
-    <label class="filter-group">
-      <span>Type de structure</span>
-      <select id="filter-structure">
-        <option value="">Tous</option>
-        <option value="béton armé">Béton armé</option>
-        <option value="acier">Acier</option>
-        <option value="bois">Bois</option>
-      </select>
-    </label>
-
-    <label class="filter-group">
-      <span>Recherche</span>
-      <input type="text" id="filter-search" placeholder="Titre du projet...">
-    </label>
+  <!-- ===================== MISSIONS ===================== -->
+  <section class="missions">
+    <div class="section-label"><span class="num">§01</span> Missions de l'ingénieur civil</div>
+    <div class="missions-grid">
+      <article class="mission-card">
+        <span class="mission-index">01</span>
+        <h3>Concevoir des structures parasismiques et paracycloniques</h3>
+        <p>Calculer pour le pire jour, pas pour le plus beau. En Haïti, une structure qui n'a pas été pensée pour trembler ou plier au vent est une structure qui n'a pas été pensée.</p>
+      </article>
+      <article class="mission-card">
+        <span class="mission-index">02</span>
+        <h3>Réhabiliter après sinistre</h3>
+        <p>Diagnostiquer ce qui peut être sauvé, démolir ce qui ne le peut pas, et documenter pourquoi — pour que la prochaine génération ne reproduise pas l'erreur.</p>
+      </article>
+      <article class="mission-card">
+        <span class="mission-index">03</span>
+        <h3>Contrôler la qualité des matériaux locaux</h3>
+        <p>Sable, gravier, ciment, acier — vérifier ce qui entre réellement dans le béton, pas ce qui est écrit sur le sac.</p>
+      </article>
+      <article class="mission-card">
+        <span class="mission-index">04</span>
+        <h3>Encadrer les chantiers informels</h3>
+        <p>La majorité des bâtiments d'Haïti se construisent hors plan. L'ingénieur civil qui descend sur ces chantiers change plus de vies que celui qui reste au bureau.</p>
+      </article>
+      <article class="mission-card">
+        <span class="mission-index">05</span>
+        <h3>Planifier routes et réseaux</h3>
+        <p>Un pays se déplace, s'alimente en eau et évacue ses eaux usées à travers ce que l'ingénieur civil a tracé sur le papier des années avant.</p>
+      </article>
+    </div>
   </section>
 
-  <!-- ===================== GRILLE DE PROJETS ===================== -->
-  <main>
-    <div class="section-label"><span class="num">§01</span> Projets archivés</div>
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
 
-    <div class="grid" id="projects-grid">
-      <p class="loading-msg" id="loading-msg">Chargement des projets validés...</p>
-      <p class="empty-msg" id="empty-msg" hidden>Aucun projet ne correspond à ces critères.</p>
+  <!-- ===================== ATELIERS ===================== -->
+  <section class="ateliers">
+    <div class="section-label"><span class="num">§02</span> Ateliers proposés</div>
+    <p class="section-intro">Ce que la filière organise pour ses étudiants — cliquez pour le détail.</p>
+
+    <div class="ateliers-grid">
+      <button class="atelier-card" data-modal="atelier-beton">
+        <span class="atelier-icon">◧</span>
+        <h3>Béton & matériaux locaux</h3>
+        <span class="atelier-cta">Voir l'atelier →</span>
+      </button>
+      <button class="atelier-card" data-modal="atelier-calcul">
+        <span class="atelier-icon">∑</span>
+        <h3>Calcul de structures</h3>
+        <span class="atelier-cta">Voir l'atelier →</span>
+      </button>
+      <button class="atelier-card" data-modal="atelier-chantier">
+        <span class="atelier-icon">⚠</span>
+        <h3>Sécurité de chantier</h3>
+        <span class="atelier-cta">Voir l'atelier →</span>
+      </button>
+      <button class="atelier-card" data-modal="atelier-topo">
+        <span class="atelier-icon">◎</span>
+        <h3>Topographie & levés</h3>
+        <span class="atelier-cta">Voir l'atelier →</span>
+      </button>
     </div>
-  </main>
+  </section>
 
-  <!-- ===================== MODALE DÉTAIL PROJET ===================== -->
-  <div class="modal-overlay" id="project-modal" hidden>
+  <!-- Modales ateliers (contenu à ajuster avec Sébastien) -->
+  <div class="modal-overlay" id="modal-atelier-beton" hidden>
     <div class="modal-card">
-      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
-
-      <div class="modal-header">
-        <img src="" alt="" id="modal-cover" class="modal-cover">
-        <div class="modal-title-block">
-          <div class="modal-eyebrow" id="modal-school">—</div>
-          <h2 id="modal-title">Titre du projet</h2>
-          <p id="modal-description">Description du projet.</p>
-        </div>
-      </div>
-
-      <div class="intervenants-block">
-        <div class="section-label small"><span class="num">§02</span> Intervenants</div>
-        <div class="intervenants-grid">
-          <div class="intervenant-item">
-            <span class="spec-label">Étudiant</span>
-            <span class="spec-value" id="modal-student">—</span>
-          </div>
-          <div class="intervenant-item">
-            <span class="spec-label">Validé par</span>
-            <span class="spec-value" id="modal-validator">—</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="spec-sheet">
-        <div class="section-label small"><span class="num">§03</span> Fiche technique</div>
-        <div class="spec-grid">
-          <div class="spec-item">
-            <span class="spec-label">Type de structure</span>
-            <span class="spec-value" id="spec-type-structure">—</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Charge admissible</span>
-            <span class="spec-value" id="spec-charge">—</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Résistance du sol</span>
-            <span class="spec-value" id="spec-resistance-sol">—</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Surface</span>
-            <span class="spec-value" id="spec-surface">—</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Norme appliquée</span>
-            <span class="spec-value" id="spec-norme">—</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Plan technique</span>
-            <a href="#" id="spec-plan-link" target="_blank" class="spec-value link">Voir le plan →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="deliverables-block">
-        <div class="section-label small"><span class="num">§04</span> Livrables</div>
-        <ol class="deliverables-list" id="deliverables-list"></ol>
-      </div>
+      <button class="modal-close" data-close>✕</button>
+      <div class="modal-eyebrow">Atelier</div>
+      <h2>Béton & matériaux locaux</h2>
+      <p>Formulation de béton adaptée aux granulats disponibles localement, essais de résistance, et sensibilisation aux dosages hors-norme fréquents sur les chantiers informels.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-atelier-calcul" hidden>
+    <div class="modal-card">
+      <button class="modal-close" data-close>✕</button>
+      <div class="modal-eyebrow">Atelier</div>
+      <h2>Calcul de structures</h2>
+      <p>Descente de charges, dimensionnement de poutres et poteaux, initiation aux logiciels de calcul — avec des études de cas tirées de bâtiments réels du pays.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-atelier-chantier" hidden>
+    <div class="modal-card">
+      <button class="modal-close" data-close>✕</button>
+      <div class="modal-eyebrow">Atelier</div>
+      <h2>Sécurité de chantier</h2>
+      <p>Prévention des accidents, équipements de protection, gestion des risques sur des chantiers souvent dépourvus de normes de sécurité appliquées.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-atelier-topo" hidden>
+    <div class="modal-card">
+      <button class="modal-close" data-close>✕</button>
+      <div class="modal-eyebrow">Atelier</div>
+      <h2>Topographie & levés</h2>
+      <p>Lecture de terrain, utilisation d'instruments de mesure, production de plans topographiques pour préparer une implantation fiable.</p>
     </div>
   </div>
 
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
+
+  <!-- ===================== CRÉATIONS LIBRES ===================== -->
+  <section class="creations">
+    <div class="section-label"><span class="num">§03</span> Créations libres des étudiants</div>
+    <p class="section-intro">
+      Maquettes, croquis de structure, exercices personnels, essais de calcul —
+      publiés directement par l'étudiant, sans validation d'un enseignant. Un espace
+      pour explorer, pas seulement pour être noté.
+    </p>
+    <div class="creations-teaser">
+      <p class="teaser-note">— section connectée à la publication libre, contenu à venir —</p>
+      <a href="/creations/index.html" class="btn-outline">Explorer les créations</a>
+    </div>
+  </section>
+
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
+
+  <!-- ===================== MÉMOIRES & THÈSES ===================== -->
+  <section class="memoires">
+    <div class="section-label"><span class="num">§04</span> Mémoires & thèses</div>
+    <p class="section-intro">
+      Les travaux de fin d'études des facultés d'ingénierie du pays, réunis à un seul
+      endroit — pour que la recherche d'un étudiant serve à celui qui vient après lui.
+    </p>
+    <div class="creations-teaser">
+      <p class="teaser-note">— archive à alimenter au fil des dépôts —</p>
+      <a href="/memoires/index.html" class="btn-outline">Voir les mémoires</a>
+    </div>
+  </section>
+
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
+
+  <!-- ===================== LE NON-ARCHIVÉ ===================== -->
+  <section class="non-archive">
+    <div class="section-label"><span class="num">§05</span> Ce qu'on n'archive jamais</div>
+    <div class="non-archive-body">
+      <p class="lede">
+        Un rapport de fissure griffonné sur un carnet de chantier. La technique d'un
+        maçon qui n'a jamais ouvert un livre mais qui sait quand un mur va céder.
+        Une photo prise cinq minutes après un effondrement, jamais montrée à personne.
+      </p>
+      <p>
+        Ce n'est "pas important" seulement parce que personne ne l'a jamais demandé.
+        C'est en réalité une mémoire technique nationale qui disparaît à chaque chantier
+        démoli, à chaque contremaître qui prend sa retraite sans transmettre. Lakou
+        Génie Civil veut aussi être l'endroit où ce savoir-là trouve enfin une place.
+      </p>
+      <a href="/inscription/index.html" class="btn-primary">Contribuer à cette mémoire</a>
+    </div>
+  </section>
+
   <footer>
     <span>LAKOU GÉNIE CIVIL © 2026</span>
-    <span>V.01</span>
+    <span>V.02</span>
   </footer>
 
-  <script type="module" src="app.js"></script>
+  <script>
+    document.querySelectorAll('.atelier-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-' + btn.dataset.modal);
+        if (modal) modal.hidden = false;
+      });
+    });
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.hasAttribute('data-close')) overlay.hidden = true;
+      });
+    });
+  </script>
   <script src="shared/nav.js" defer></script>
 </body>
 </html>
