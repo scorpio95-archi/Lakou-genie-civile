@@ -1,0 +1,168 @@
+/* ===================== MENU GLOBAL — LAKOU GÉNIE CIVIL ===================== */
+/* À lier dans le <head> de CHAQUE page, avant style.css */
+
+.main-nav{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgba(33, 29, 26, 0.97);
+  border-bottom: 1px solid var(--mortar, rgba(255,255,255,0.06));
+}
+
+.nav-inner{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ----- Logo ----- */
+.nav-logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--paper, #ece6da);
+}
+
+.nav-logo-mark{
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--paper, #ece6da);
+  background: var(--rust, #b5502e);
+  padding: 4px 8px;
+  letter-spacing: 1px;
+}
+
+.nav-logo-text{
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+/* ----- Liens ----- */
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--steel, #a49c8f);
+  text-decoration: none;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color .2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link:hover{ color: var(--paper, #ece6da); }
+
+.nav-cta{
+  border: 1px solid var(--safety, #e3a72e);
+  color: var(--safety, #e3a72e) !important;
+}
+.nav-cta:hover{
+  background: var(--safety, #e3a72e);
+  color: var(--concrete-dark, #211d1a) !important;
+}
+
+.nav-auth-zone{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-cta-outline{
+  border: 1px solid var(--steel, #a49c8f);
+  color: var(--steel, #a49c8f) !important;
+}
+.nav-cta-outline:hover{
+  background: var(--steel, #a49c8f);
+  color: var(--concrete-dark, #211d1a) !important;
+}
+
+/* ----- Toggle mobile (hamburger) ----- */
+.nav-toggle{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle span{
+  width: 22px;
+  height: 2px;
+  background: var(--paper, #ece6da);
+  transition: all .25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1){
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 780px){
+  .nav-toggle{ display: flex; }
+
+  .nav-links{
+    position: fixed;
+    top: 62px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    background: var(--concrete-dark, #211d1a);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 8vw;
+    gap: 4px;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    overflow-y: auto;
+  }
+
+  .nav-links.open{
+    transform: translateX(0);
+  }
+
+  .nav-link{
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--mortar, rgba(255,255,255,0.06));
+    justify-content: space-between;
+  }
+
+  .nav-auth-zone{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .nav-cta{
+    margin-top: 12px;
+    text-align: center;
+    justify-content: center;
+  }
+}
