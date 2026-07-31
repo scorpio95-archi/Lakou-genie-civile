@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumettre un projet — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/auth.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Soumettre un projet</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="guard-msg" class="guard-msg" hidden>
+    <p>Connecte-toi pour soumettre un projet.</p>
+    <a href="/connexion/index.html" class="btn-outline">Se connecter</a>
+  </div>
+
+  <main class="submit-page" id="submit-page" hidden>
+    <div class="submit-card">
+      <div class="eyebrow">Lakou Génie Civil</div>
+      <h1>Soumettre un projet</h1>
+      <p class="subhead">
+        Un brouillon peut être enregistré et complété plus tard. Une soumission passe en attente
+        de validation — sauf si tu es enseignant, elle est alors validée automatiquement.
+      </p>
+
+      <div id="form-msg"></div>
+
+      <form id="project-form">
+
+        <div class="section-label small"><span class="num">§01</span> Informations générales</div>
+
+        <div class="form-group">
+          <label for="title">Titre du projet</label>
+          <input type="text" id="title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="school-select">École</label>
+          <select id="school-select" required>
+            <option value="" disabled>Choisis ton école</option>
+            <option value="__autre__">Autre (préciser)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="school-other-group" hidden>
+          <label for="school-other">Précise ton école</label>
+          <input type="text" id="school-other" placeholder="Nom de l'établissement">
+        </div>
+
+        <div class="section-label small"><span class="num">§02</span> Fiche technique</div>
+
+        <div class="form-group">
+          <label for="structure_type">Type de structure</label>
+          <select id="structure_type" required>
+            <option value="" disabled selected>Choisir</option>
+            <option value="béton armé">Béton armé</option>
+            <option value="acier">Acier</option>
+            <option value="bois">Bois</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="charge_admissible">Charge admissible</label>
+            <input type="text" id="charge_admissible" placeholder="ex : 250 kN/m²">
+          </div>
+          <div class="form-group">
+            <label for="resistance_sol">Résistance du sol</label>
+            <input type="text" id="resistance_sol" placeholder="ex : 150 kPa">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="surface">Surface</label>
+            <input type="text" id="surface" placeholder="ex : 120 m²">
+          </div>
+          <div class="form-group">
+            <label for="norme">Norme appliquée</label>
+            <input type="text" id="norme" placeholder="ex : Code National du Bâtiment d'Haïti">
+          </div>
+        </div>
+
+        <div class="section-label small"><span class="num">§03</span> Fichiers</div>
+
+        <div class="form-group">
+          <label for="cover_file">Image de couverture</label>
+          <input type="file" id="cover_file" accept="image/*" required>
+          <span class="file-hint">Photo, rendu ou capture représentative du projet.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="plan_file">Plan technique</label>
+          <input type="file" id="plan_file" accept="image/*,application/pdf">
+          <span class="file-hint">PDF ou image du plan. Optionnel si non disponible.</span>
+        </div>
+
+        <div class="section-label small"><span class="num">§04</span> Livrables</div>
+        <p class="section-intro small">
+          Ajoute chaque étape/livrable du projet (note de calcul, devis, rapport géotechnique, photos de
+          chantier...). Ajoute autant d'étapes que nécessaire.
+        </p>
+
+        <div id="livrables-list"></div>
+        <button type="button" class="btn-outline" id="add-livrable-btn">+ Ajouter une étape</button>
+
+        <div class="submit-actions">
+          <button type="submit" class="btn-outline" id="save-draft-btn" data-status="brouillon">
+            Enregistrer comme brouillon
+          </button>
+          <button type="submit" class="btn-primary" id="submit-final-btn" data-status="soumis">
+            Soumettre pour validation
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.02</span>
+  </footer>
+
+  <script type="module" src="submit.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
