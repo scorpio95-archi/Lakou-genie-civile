@@ -1,0 +1,133 @@
+/* ===================== PAGE AUTH — PARTAGÉ inscription/connexion ===================== */
+.auth-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--mortar);
+  background: rgba(255,255,255,0.02);
+  padding: 40px 32px;
+}
+
+.auth-card .eyebrow{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--safety);
+  text-transform: uppercase;
+}
+
+.auth-card h1{
+  font-family: 'Oswald', 'Archivo', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-top: 12px;
+  letter-spacing: .5px;
+}
+
+.auth-card .subhead{
+  margin-top: 10px;
+  color: var(--steel);
+  font-size: .92rem;
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+/* ----- Formulaire ----- */
+.auth-form{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--steel);
+  text-transform: uppercase;
+}
+
+.form-group input{
+  background: var(--concrete-dark);
+  border: 1px solid var(--mortar);
+  color: var(--paper);
+  padding: 12px 14px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+}
+
+.form-group input:focus{
+  outline: none;
+  border-color: var(--safety);
+}
+
+.form-error{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #e8615a;
+  border: 1px solid #e8615a;
+  padding: 10px 12px;
+  background: rgba(232, 97, 90, 0.08);
+}
+
+.form-success{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--safety);
+  border: 1px solid var(--safety);
+  padding: 10px 12px;
+  background: rgba(227, 167, 46, 0.08);
+}
+
+.btn-primary{
+  background: var(--rust);
+  color: var(--paper);
+  border: none;
+  padding: 14px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease;
+  margin-top: 6px;
+}
+.btn-primary:hover{ background: var(--safety); color: var(--ink); }
+.btn-primary:disabled{ opacity: .5; cursor: not-allowed; }
+
+/* ----- Liens secondaires ----- */
+.auth-switch{
+  margin-top: 24px;
+  text-align: center;
+  font-size: .88rem;
+  color: var(--steel);
+}
+.auth-switch a{ color: var(--safety); text-decoration: none; }
+.auth-switch a:hover{ text-decoration: underline; }
+
+.auth-legal{
+  margin-top: 14px;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  color: var(--steel);
+  line-height: 1.5;
+}
+.auth-legal a{ color: var(--steel); text-decoration: underline; }
