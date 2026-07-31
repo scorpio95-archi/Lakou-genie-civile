@@ -1,14 +1,13 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 /* ⚠️ ASSOMPTIONS À VÉRIFIER AVEC SÉBASTIEN :
-   - Même projet Supabase partagé que Lakou Enjenyè (isolation par préfixe "civil_").
-   - Table "civil_articles" (pas encore créée) + table partagée "profiles" (full_name, avatar_url, role).
-   - Bucket storage "civil-articles-files" pour les pièces jointes.
-   - Edge function "link-preview" réutilisée telle quelle (générique, sans dépendance à une discipline).
-   Ajuster ces noms si la convention réelle diffère. */
+   - Table partagée "profiles" (full_name, avatar_url, role) — à confirmer, sinon remplacer
+     les jointures/select ci-dessous par "civil_profiles".
+   - Bucket storage "civils-upload", dossier "articles/{user_id}/..." pour les pièces jointes.
+   - Edge function "link-preview" réutilisée telle quelle (générique, sans dépendance à une discipline). */
 
-const SUPABASE_URL = 'https://bblhqjdymssqhfbwoxie.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_7PbAzInao2xZLI85BP42XA_nAlnxcQL';
+const SUPABASE_URL = 'https://vvizvjmvesjenuetsxyq.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_6vv-OVHoOw2xCbKTbEOp8g_nRqdP7wc';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
@@ -116,8 +115,7 @@ function renderFeed() {
         </a>
       `;
     }
-
-    card.innerHTML = `
+     card.innerHTML = `
       <div class="article-author-row">
         <img class="author-avatar" src="${avatarUrl}" alt="">
         <div class="author-info">
@@ -221,7 +219,6 @@ linkInput.addEventListener('input', () => {
   linkPreviewStatus.textContent = 'Chargement de l\'aperçu...';
   previewTimeout = setTimeout(() => fetchLinkPreview(url), 800);
 });
-
 async function fetchLinkPreview(url) {
   try {
     const { data, error } = await supabase.functions.invoke('link-preview', { body: { url } });
@@ -243,6 +240,7 @@ async function fetchLinkPreview(url) {
     linkPreviewStatus.textContent = 'Aperçu indisponible.';
   }
 }
+
 // ===================== SOUMISSION =====================
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -262,10 +260,9 @@ form.addEventListener('submit', async (e) => {
     const content = document.getElementById('article-content').value.trim();
     const file = document.getElementById('article-file').files[0];
     payload.content = content;
-
-    if (file) {
-      const path = `${currentUser.id}/${Date.now()}_${file.name}`;
-      const { error: uploadError } = await supabase.storage.from('civil-articles-files').upload(path, file);
+     if (file) {
+      const path = `articles/${currentUser.id}/${Date.now()}_${file.name}`;
+      const { error: uploadError } = await supabase.storage.from('civils-upload').upload(path, file);
       if (uploadError) {
         errorEl.textContent = 'Erreur upload : ' + uploadError.message;
         errorEl.hidden = false;
@@ -273,7 +270,7 @@ form.addEventListener('submit', async (e) => {
         submitBtn.textContent = 'Publier';
         return;
       }
-      const { data: urlData } = supabase.storage.from('civil-articles-files').getPublicUrl(path);
+      const { data: urlData } = supabase.storage.from('civils-upload').getPublicUrl(path);
       payload.file_url = urlData.publicUrl;
     }
   } else {
