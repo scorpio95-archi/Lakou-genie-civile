@@ -59,7 +59,7 @@ form.addEventListener('submit', async (e) => {
   });
 
   if (error) {
-    showMessage(error.message, 'error');
+    showMessage(error.message || 'Une erreur est survenue côté serveur. Réessaie dans un instant — si ça persiste, vérifie le statut de Supabase.', 'error');
     submitBtn.disabled = false;
     submitBtn.textContent = 'Créer mon compte';
     return;
