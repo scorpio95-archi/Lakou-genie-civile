@@ -1,10 +1,5 @@
-// ===================== CONFIGURATION SUPABASE — LAKOU GÉNIE CIVIL =====================
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
-const SUPABASE_URL = 'https://vvizvjmvesjenuetsxyq.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_6vv-OVHoOw2xCbKTbEOp8g_nRqdP7wc';
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// ===================== CLIENT SUPABASE PARTAGÉ =====================
+import { supabase } from '/shared/supabase-client.js';
 
 // ===================== ÉTAT LOCAL =====================
 let allProjects = [];   // tous les projets validés chargés une fois
