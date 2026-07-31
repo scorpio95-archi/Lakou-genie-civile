@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paramètres — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/parametres/style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Paramètres</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="settings-page">
+
+    <header class="settings-header">
+      <div class="eyebrow">Lakou Génie Civil</div>
+      <h1>Paramètres</h1>
+      <p class="subhead">Gère ton profil et ton compte.</p>
+    </header>
+
+    <p class="loading-msg" id="loading-msg">Chargement...</p>
+
+    <div id="settings-content" hidden>
+
+      <!-- ===================== PROFIL ===================== -->
+      <section class="settings-block">
+        <div class="section-label"><span class="num">§01</span> Profil</div>
+
+        <form id="profile-form" class="auth-form">
+          <div class="avatar-row">
+            <img id="avatar-preview" class="avatar-preview" src="" alt="">
+            <div class="avatar-controls">
+              <label class="file-upload-btn" for="avatar-input">📎 Changer la photo</label>
+              <input type="file" id="avatar-input" accept="image/*" hidden>
+              <span class="field-hint" id="avatar-status"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="full-name">Nom complet</label>
+            <input type="text" id="full-name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Rôle</label>
+            <span class="role-badge" id="role-badge">—</span>
+          </div>
+
+          <p class="form-error" id="profile-error" hidden></p>
+          <p class="form-success" id="profile-success" hidden>Profil mis à jour.</p>
+          <button type="submit" class="btn-primary" id="profile-submit-btn">Enregistrer</button>
+        </form>
+      </section>
+
+      <!-- ===================== MOT DE PASSE ===================== -->
+      <section class="settings-block">
+        <div class="section-label"><span class="num">§02</span> Mot de passe</div>
+
+        <form id="password-form" class="auth-form">
+          <div class="form-group">
+            <label for="new-password">Nouveau mot de passe</label>
+            <input type="password" id="new-password" minlength="6" required placeholder="Au moins 6 caractères">
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmer le mot de passe</label>
+            <input type="password" id="confirm-password" minlength="6" required>
+          </div>
+          <p class="form-error" id="password-error" hidden></p>
+          <p class="form-success" id="password-success" hidden>Mot de passe modifié.</p>
+          <button type="submit" class="btn-primary" id="password-submit-btn">Changer le mot de passe</button>
+        </form>
+      </section>
+
+      <!-- ===================== SESSION ===================== -->
+      <section class="settings-block">
+        <div class="section-label"><span class="num">§03</span> Session</div>
+        <button class="btn-outline" id="logout-btn">Se déconnecter</button>
+      </section>
+
+      <!-- ===================== ZONE DANGER ===================== -->
+      <section class="settings-block danger-zone">
+        <div class="section-label"><span class="num">§04</span> Zone danger</div>
+        <p class="danger-note">Supprimer ton compte efface définitivement ton profil et tes contributions publiées. Cette action est irréversible.</p>
+        <button class="btn-danger" id="delete-account-btn">Supprimer mon compte</button>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ===================== MODALE CONFIRMATION SUPPRESSION ===================== -->
+  <div class="modal-overlay" id="delete-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="delete-modal-close" aria-label="Fermer">✕</button>
+      <div class="modal-eyebrow">Confirmation</div>
+      <h2>Supprimer ton compte ?</h2>
+      <p>Cette action est définitive. Tape <strong>SUPPRIMER</strong> ci-dessous pour confirmer.</p>
+      <div class="form-group">
+        <input type="text" id="delete-confirm-input" placeholder="SUPPRIMER">
+      </div>
+      <p class="form-error" id="delete-error" hidden></p>
+      <button class="btn-danger" id="delete-confirm-btn">Supprimer définitivement</button>
+    </div>
+  </div>
+
+  <script type="module" src="/parametres/app.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
