@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mémoires & thèses — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/creations/style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Mémoires & thèses</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="listing-header">
+    <div class="eyebrow">Lakou Génie Civil</div>
+    <h1>Mémoires & <span>thèses</span></h1>
+    <p class="lede">Les travaux de fin d'études des facultés d'ingénierie du pays, validés par un enseignant, réunis à un seul endroit.</p>
+    <a href="/nouveau-memoire/index.html" class="btn-primary">Déposer un mémoire</a>
+  </header>
+
+  <main>
+    <div class="grid" id="memoires-grid">
+      <p class="loading-msg" id="loading-msg">Chargement...</p>
+      <p class="empty-msg" id="empty-msg" hidden>Aucun mémoire validé pour le moment.</p>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="memoire-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close">✕</button>
+      <img src="" alt="" id="modal-cover" class="modal-cover">
+      <div class="modal-eyebrow" id="modal-school">—</div>
+      <h2 id="modal-title">—</h2>
+      <p id="modal-description">—</p>
+      <p class="modal-creator">Par <span id="modal-author">—</span> · <span id="modal-year">—</span> · <span id="modal-degree">—</span></p>
+      <a href="#" id="modal-file-link" target="_blank" class="btn-outline">Lire le mémoire →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.02</span>
+  </footer>
+
+  <script type="module" src="memoires.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
