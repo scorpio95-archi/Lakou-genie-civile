@@ -22,7 +22,7 @@ form.addEventListener('submit', async (e) => {
   if (error) {
     showMessage(error.message === 'Invalid login credentials'
       ? 'Email ou mot de passe incorrect.'
-      : error.message, 'error');
+      : (error.message || 'Une erreur est survenue côté serveur. Réessaie dans un instant.'), 'error');
     submitBtn.disabled = false;
     submitBtn.textContent = 'Se connecter';
     return;
