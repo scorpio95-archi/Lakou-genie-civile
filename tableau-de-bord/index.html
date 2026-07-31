@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shared/auth.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Tableau de bord</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="guard-msg" class="guard-msg" hidden>
+    <p>Connecte-toi pour accéder à ton tableau de bord.</p>
+    <a href="/connexion/index.html" class="btn-outline">Se connecter</a>
+  </div>
+
+  <main class="dashboard" id="dashboard-page" hidden>
+
+    <header class="dashboard-header">
+      <div class="eyebrow" id="role-badge">—</div>
+      <h1>Bonjour, <span id="user-name">—</span></h1>
+    </header>
+
+    <!-- ===================== DEVENIR ENSEIGNANT ===================== -->
+    <section class="teacher-card" id="teacher-card" hidden>
+      <div class="section-label"><span class="num">§00</span> Devenir enseignant</div>
+      <p class="section-intro">Explique en quelques lignes pourquoi tu devrais avoir le statut enseignant (institution, matière enseignée...). Un administrateur examine chaque demande.</p>
+      <div id="teacher-request-status"></div>
+      <form id="teacher-request-form">
+        <div class="form-group">
+          <label for="justification">Justification</label>
+          <textarea id="justification" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="institution">Institution (optionnel)</label>
+          <input type="text" id="institution">
+        </div>
+        <button type="submit" class="btn-primary" id="teacher-request-btn">Envoyer la demande</button>
+      </form>
+    </section>
+
+    <!-- ===================== MES CONTRIBUTIONS ===================== -->
+    <section>
+      <div class="section-label"><span class="num">§01</span> Mes projets</div>
+      <div class="dash-list" id="my-projects"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouveau-projet/index.html" class="btn-outline">+ Nouveau projet</a>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="num">§02</span> Mes créations</div>
+      <div class="dash-list" id="my-creations"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouvelle-creation/index.html" class="btn-outline">+ Nouvelle création</a>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="num">§03</span> Mes mémoires</div>
+      <div class="dash-list" id="my-memoires"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouveau-memoire/index.html" class="btn-outline">+ Nouveau mémoire</a>
+    </section>
+
+    <!-- ===================== VALIDATION (enseignant/admin) ===================== -->
+    <section id="validation-section" hidden>
+      <div class="section-label"><span class="num">§04</span> En attente de validation</div>
+      <div class="dash-list" id="pending-validation"></div>
+    </section>
+
+    <!-- ===================== DEMANDES ENSEIGNANT (admin) ===================== -->
+    <section id="teacher-requests-section" hidden>
+      <div class="section-label"><span class="num">§05</span> Demandes enseignant en attente</div>
+      <div class="dash-list" id="pending-teacher-requests"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.02</span>
+  </footer>
+
+  <script type="module" src="dashboard.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
