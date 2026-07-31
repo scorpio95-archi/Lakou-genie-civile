@@ -104,6 +104,12 @@
   border: none;
   cursor: pointer;
   padding: 6px;
+  position: relative;
+  z-index: 10000;
+}
+
+.nav-close-btn{
+  display: none;
 }
 
 .nav-toggle span{
@@ -146,6 +152,23 @@
 
   .nav-links.open{
     transform: translateX(0);
+  }
+
+  .nav-close-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+    background: var(--rust, #b5502e);
+    color: var(--paper, #ece6da);
+    border: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
   }
 
   .nav-link{
