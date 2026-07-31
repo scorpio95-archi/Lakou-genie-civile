@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/articles/style.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Articles</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+        <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/articles/index.html" class="nav-link">Articles</a>
+        <a href="/a-propos/index.html" class="nav-link">À propos</a>
+        <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
+        <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="articles-page">
+
+    <header class="articles-header">
+      <div class="eyebrow">Lakou Génie Civil</div>
+      <h1>Articles</h1>
+      <p class="subhead">Retours de chantier, ressources techniques et liens partagés par les étudiants en génie civil.</p>
+      <button class="btn-primary" id="new-article-btn" hidden>+ Publier un article</button>
+      <p class="login-hint" id="login-hint">
+        <a href="/connexion/index.html">Connecte-toi</a> pour publier un article.
+      </p>
+    </header>
+
+    <div class="feed" id="articles-feed">
+      <p class="loading-msg" id="loading-msg">Chargement des articles...</p>
+      <p class="empty-msg" id="empty-msg" hidden>Aucun article pour l'instant.</p>
+    </div>
+
+  </main>
+
+  <!-- ===================== MODALE CRÉATION / ÉDITION ===================== -->
+  <div class="modal-overlay" id="article-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="article-modal-close" aria-label="Fermer">✕</button>
+
+      <div class="section-label small"><span class="num">§</span> <span id="modal-mode-title">Nouvel article</span></div>
+
+      <div class="type-toggle">
+        <button type="button" class="type-btn active" data-type="written">📝 Article rédigé</button>
+        <button type="button" class="type-btn" data-type="link">🔗 Lien externe</button>
+      </div>
+
+      <form id="article-form" class="auth-form">
+
+        <input type="hidden" id="article-id">
+
+        <div class="form-group">
+          <label for="article-title">Titre</label>
+          <input type="text" id="article-title" required placeholder="Titre de ton article">
+        </div>
+
+        <!-- Champs pour "Article rédigé" -->
+        <div id="written-fields">
+          <div class="form-group">
+            <label for="article-content">Contenu</label>
+            <textarea id="article-content" rows="6" placeholder="Écris ton article ici..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Ou joindre un document (Word / PDF)</label>
+            <label class="file-upload-btn" for="article-file">📎 Choisir un fichier</label>
+            <input type="file" id="article-file" accept=".doc,.docx,.pdf" hidden>
+            <span class="file-selected-name" id="article-file-name"></span>
+          </div>
+        </div>
+
+        <!-- Champs pour "Lien externe" -->
+        <div id="link-fields" hidden>
+          <div class="form-group">
+            <label for="article-link">Lien de l'article</label>
+            <input type="url" id="article-link" placeholder="https://...">
+            <span class="field-hint" id="link-preview-status"></span>
+          </div>
+          <div class="link-preview-card" id="link-preview-card" hidden>
+            <img id="link-preview-img" src="" alt="">
+            <span id="link-preview-title-text"></span>
+          </div>
+        </div>
+
+        <p class="form-error" id="article-error" hidden></p>
+        <button type="submit" class="btn-primary" id="article-submit-btn">Publier</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/articles/app.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
