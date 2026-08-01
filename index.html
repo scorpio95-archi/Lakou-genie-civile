@@ -127,12 +127,13 @@
         <h3>Sécurité de chantier</h3>
         <span class="atelier-cta">Lire la description</span>
       </button>
-      <button class="atelier-card" data-modal="atelier-topo">
+      <button class="atelier-card atelier-extra" data-modal="atelier-topo" hidden>
         <span class="atelier-icon">◎</span>
         <h3>Topographie & levés</h3>
         <span class="atelier-cta">Lire la description</span>
       </button>
     </div>
+    <button class="btn-outline ateliers-toggle" id="ateliers-toggle" style="margin-top:20px;">Voir davantage ↓</button>
   </section>
 
   <!-- Modales ateliers (contenu à ajuster avec Sébastien) -->
@@ -142,7 +143,6 @@
       <div class="modal-eyebrow">Atelier</div>
       <h2>Béton & matériaux locaux</h2>
       <p>Formulation de béton adaptée aux granulats disponibles localement, essais de résistance, et sensibilisation aux dosages hors-norme fréquents sur les chantiers informels.</p>
-      <a href="#" target="_blank" rel="noopener" class="btn-outline atelier-voir-plus" style="margin-top:16px;display:inline-block;text-decoration:none;">Voir plus →</a>
     </div>
   </div>
   <div class="modal-overlay" id="modal-atelier-calcul" hidden>
@@ -151,7 +151,6 @@
       <div class="modal-eyebrow">Atelier</div>
       <h2>Calcul de structures</h2>
       <p>Descente de charges, dimensionnement de poutres et poteaux, initiation aux logiciels de calcul — avec des études de cas tirées de bâtiments réels du pays.</p>
-      <a href="#" target="_blank" rel="noopener" class="btn-outline atelier-voir-plus" style="margin-top:16px;display:inline-block;text-decoration:none;">Voir plus →</a>
     </div>
   </div>
   <div class="modal-overlay" id="modal-atelier-chantier" hidden>
@@ -160,7 +159,6 @@
       <div class="modal-eyebrow">Atelier</div>
       <h2>Sécurité de chantier</h2>
       <p>Prévention des accidents, équipements de protection, gestion des risques sur des chantiers souvent dépourvus de normes de sécurité appliquées.</p>
-      <a href="#" target="_blank" rel="noopener" class="btn-outline atelier-voir-plus" style="margin-top:16px;display:inline-block;text-decoration:none;">Voir plus →</a>
     </div>
   </div>
   <div class="modal-overlay" id="modal-atelier-topo" hidden>
@@ -169,7 +167,6 @@
       <div class="modal-eyebrow">Atelier</div>
       <h2>Topographie & levés</h2>
       <p>Lecture de terrain, utilisation d'instruments de mesure, production de plans topographiques pour préparer une implantation fiable.</p>
-      <a href="#" target="_blank" rel="noopener" class="btn-outline atelier-voir-plus" style="margin-top:16px;display:inline-block;text-decoration:none;">Voir plus →</a>
     </div>
   </div>
 
@@ -242,6 +239,17 @@
         if (e.target === overlay || e.target.hasAttribute('data-close')) overlay.hidden = true;
       });
     });
+
+    // Ateliers : afficher/masquer les cartes au-delà des 3 premières
+    const ateliersToggle = document.getElementById('ateliers-toggle');
+    const ateliersExtra = document.querySelectorAll('.atelier-extra');
+    if (ateliersToggle && ateliersExtra.length > 0) {
+      ateliersToggle.addEventListener('click', () => {
+        const isHidden = ateliersExtra[0].hidden;
+        ateliersExtra.forEach(card => { card.hidden = !isHidden; });
+        ateliersToggle.textContent = isHidden ? 'Voir moins ↑' : 'Voir davantage ↓';
+      });
+    }
   </script>
   <script type="module" src="/shared/nav.js"></script>
 </body>
