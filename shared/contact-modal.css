@@ -1,0 +1,48 @@
+/* shared/contact-modal.css — à charger en absolu : /shared/contact-modal.css */
+
+.contact-modal-card{
+  position: relative;
+  max-width: 460px;
+}
+
+.contact-modal-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--steel);
+  font-size: 16px;
+  cursor: pointer;
+}
+.contact-modal-close:hover{ color: var(--safety); }
+
+.contact-modal-title{
+  font-family: 'Oswald', 'Archivo', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  letter-spacing: .5px;
+}
+
+#contact-form select,
+#contact-form textarea{
+  background: var(--concrete-dark);
+  border: 1px solid var(--mortar);
+  color: var(--paper);
+  padding: 12px 14px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+#contact-form select:focus,
+#contact-form textarea:focus{
+  outline: none;
+  border-color: var(--safety);
+}
+
+#contact-form-feedback:empty{ margin: 0; }
+#contact-form-feedback{ display: flex; flex-direction: column; gap: 10px; }
