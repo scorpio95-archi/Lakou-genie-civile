@@ -1,5 +1,7 @@
 /* ===================== MENU GLOBAL — LAKOU GÉNIE CIVIL ===================== */
 /* À lier dans le <head> de CHAQUE page, avant style.css */
+html
+<link rel="stylesheet" href="/shared/contact-modal.css" />
 
 .main-nav{
   position: sticky;
