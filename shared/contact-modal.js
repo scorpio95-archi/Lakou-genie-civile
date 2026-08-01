@@ -95,6 +95,15 @@ async function resolveContext() {
 }
 
 async function openContactModal() {
+  // Si le menu mobile est ouvert, on le referme avant d'ouvrir le modal
+  // pour éviter tout chevauchement visuel pendant la transition.
+  const mobileLinks = document.getElementById('nav-links');
+  const mobileToggle = document.getElementById('nav-toggle');
+  if (mobileLinks && mobileLinks.classList.contains('open')) {
+    mobileLinks.classList.remove('open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+  }
+
   buildModalSkeleton();
   await resolveContext();
 
