@@ -2,7 +2,9 @@
 // /shared/nav.js — chargé en tant que module sur chaque page
 
 import { supabase } from './supabase-client.js';
-
+```js
+import './contact-modal.js';
+```
 // ----- Hamburger mobile + lien actif -----
 (function () {
   const toggle = document.getElementById('nav-toggle');
