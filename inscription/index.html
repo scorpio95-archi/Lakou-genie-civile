@@ -102,7 +102,12 @@
     <span>LAKOU GÉNIE CIVIL © 2026</span>
     <span>V.02</span>
   </footer>
-
+<script>
+  window.addEventListener('error', (e) => {
+    document.body.insertAdjacentHTML('afterbegin',
+      `<div style="background:#c00;color:#fff;padding:10px;font:12px monospace;word-break:break-all;">ERREUR: ${e.message} — ${e.filename}:${e.lineno}</div>`);
+  });
+</script>
   <script type="module" src="signup.js"></script>
   <script type="module" src="/shared/nav.js"></script>
 </body>
