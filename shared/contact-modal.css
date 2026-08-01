@@ -1,4 +1,11 @@
-/* shared/contact-modal.css — à charger en absolu : /shared/contact-modal.css */
+/* shared/contact-modal.css — à charger en absolu : /shared/contact-modal.css
+   Autonome : ne dépend d'aucune classe définie dans auth.css (chargé
+   uniquement sur connexion/inscription), puisque ce modal apparaît sur
+   TOUTES les pages du site via nav.js. */
+
+#contact-modal-overlay{
+  z-index: 10001 !important; /* au-dessus du nav (9999) et du menu mobile ouvert (9998) */
+}
 
 .contact-modal-card{
   position: relative;
@@ -27,6 +34,28 @@
   letter-spacing: .5px;
 }
 
+/* ----- Formulaire (autonome, ne dépend pas de auth.css) ----- */
+#contact-form.auth-form{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#contact-form .form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#contact-form .form-group label{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--steel);
+  text-transform: uppercase;
+}
+
+#contact-form input,
 #contact-form select,
 #contact-form textarea{
   background: var(--concrete-dark);
@@ -35,14 +64,65 @@
   padding: 12px 14px;
   font-family: 'Archivo', sans-serif;
   font-size: 14px;
-  resize: vertical;
+  border-radius: 0;
+  width: 100%;
 }
 
+#contact-form textarea{ resize: vertical; }
+
+#contact-form input:focus,
 #contact-form select:focus,
 #contact-form textarea:focus{
   outline: none;
   border-color: var(--safety);
 }
+
+#contact-form .form-error{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #e8615a;
+  border: 1px solid #e8615a;
+  padding: 10px 12px;
+  background: rgba(232, 97, 90, 0.08);
+}
+
+#contact-form .form-success{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--safety);
+  border: 1px solid var(--safety);
+  padding: 10px 12px;
+  background: rgba(227, 167, 46, 0.08);
+}
+
+#contact-form .btn-primary{
+  background: var(--rust);
+  color: var(--paper);
+  border: none;
+  padding: 14px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+#contact-form .btn-primary:hover{ background: var(--safety); color: var(--ink); }
+#contact-form .btn-primary:disabled{ opacity: .5; cursor: not-allowed; }
+
+#contact-form .btn-outline{
+  border: 1px solid var(--safety);
+  color: var(--safety);
+  background: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+#contact-form .btn-outline:hover{ background: var(--safety); color: var(--ink); }
 
 #contact-form-feedback:empty{ margin: 0; }
 #contact-form-feedback{ display: flex; flex-direction: column; gap: 10px; }
