@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST NAV</title>
+  <link rel="stylesheet" href="/shared/nav.css">
+</head>
+<body style="background:#111;color:#fff;">
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations/index.html" class="nav-link">Créations</a>
+      </div>
+    </div>
+  </nav>
+
+  <p style="padding:40px;">Si tu vois ce texte et que le menu répond, le bug n'est pas dans nav.js/nav.css.</p>
+
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
