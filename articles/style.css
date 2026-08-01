@@ -10,6 +10,21 @@
   --ink: #16130f;
   --error: #d9584a;
 }
+.lakou-network-bar{
+  position: relative;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .5px;
+  color: var(--steel);
+  padding: 10px 8vw;
+  display: flex;
+  gap: 8px;
+  background: var(--concrete-panel);
+  border-bottom: 1px solid var(--mortar);
+}
+.lakou-network-bar a{ color: var(--steel); text-decoration: none; }
+.lakou-network-bar a:hover{ color: var(--safety); }
+.lakou-current{ color: var(--paper); }
 
 [hidden]{ display: none !important; }
 *{ box-sizing: border-box; margin:0; padding:0; }
