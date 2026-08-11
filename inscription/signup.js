@@ -55,52 +55,68 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Création en cours...';
 
-  const fullName = document.getElementById('full_name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-  const school = schoolSelect.value === '__autre__'
-    ? schoolOtherInput.value.trim()
-    : schoolSelect.value;
+  // ⚠️ CORRECTIF : tout le corps est maintenant dans un try/catch.
+  // Avant, la moindre exception (import cassé, clé invalide, domaine non
+  // autorisé dans Supabase Auth, etc.) laissait le bouton bloqué sur
+  // "Création en cours..." sans JAMAIS rien afficher — l'échec "silencieux"
+  // rapporté. Maintenant, TOUTE erreur remonte à l'écran, avec le vrai
+  // message pour pouvoir diagnostiquer.
+  try {
+    const fullName = document.getElementById('full_name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const school = schoolSelect.value === '__autre__'
+      ? schoolOtherInput.value.trim()
+      : schoolSelect.value;
 
-  const payload = {
-    email,
-    password,
-    options: {
-      data: { full_name: fullName, school },
-      emailRedirectTo: `${window.location.origin}/connexion/index.html`,
-    },
-  };
+    const payload = {
+      email,
+      password,
+      options: {
+        data: { full_name: fullName, school },
+        emailRedirectTo: `${window.location.origin}/connexion/index.html`,
+      },
+    };
 
-  const { data, error } = await trySignUp(payload);
+    const { data, error } = await trySignUp(payload);
 
-  if (error) {
+    if (error) {
+      if (error.name === 'AuthRetryableFetchError') {
+        showMessage(
+          `Le service d'inscription est temporairement injoignable (incident réseau connu chez Supabase).
+           <button type="button" id="retry-signup-btn" class="btn-outline" style="margin-top:10px;">Réessayer</button>`,
+          'error'
+        );
+        document.getElementById('retry-signup-btn').addEventListener('click', () => {
+          form.dispatchEvent(new Event('submit', { cancelable: true }));
+        });
+      } else {
+        showMessage(error.message || 'Une erreur est survenue. Réessaie dans un instant.', 'error');
+      }
+      return;
+    }
+
+    if (data.session) {
+      // Confirmation par email désactivée — session immédiate
+      window.location.href = '/index.html';
+      return;
+    }
+
+    showMessage('Compte créé. Vérifie ta boîte mail pour confirmer ton adresse avant de te connecter.', 'success');
+    form.reset();
+    schoolOtherGroup.hidden = true;
+
+  } catch (err) {
+    // Capture tout ce qui n'est pas une erreur Supabase "propre" : import
+    // cassé, exception JS, etc. C'est cette branche qui était invisible avant.
+    console.error('Erreur inattendue à l\'inscription :', err);
+    showMessage(
+      `Erreur technique inattendue : ${err && err.message ? err.message : String(err)}<br>
+       <small>Ouvre la console du navigateur (menu ⋮ → Outils de développement) et envoie-moi ce message exact.</small>`,
+      'error'
+    );
+  } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Créer mon compte';
-
-    if (error.name === 'AuthRetryableFetchError') {
-      showMessage(
-        `Le service d'inscription est temporairement injoignable (incident réseau connu chez Supabase).
-         <button type="button" id="retry-signup-btn" class="btn-outline" style="margin-top:10px;">Réessayer</button>`,
-        'error'
-      );
-      document.getElementById('retry-signup-btn').addEventListener('click', () => {
-        form.dispatchEvent(new Event('submit', { cancelable: true }));
-      });
-    } else {
-      showMessage(error.message || 'Une erreur est survenue. Réessaie dans un instant.', 'error');
-    }
-    return;
   }
-
-  if (data.session) {
-    // Confirmation par email désactivée — session immédiate
-    window.location.href = '/index.html';
-    return;
-  }
-
-  showMessage('Compte créé. Vérifie ta boîte mail pour confirmer ton adresse avant de te connecter.', 'success');
-  form.reset();
-  schoolOtherGroup.hidden = true;
-  submitBtn.disabled = false;
-  submitBtn.textContent = 'Créer mon compte';
 });
