@@ -31,21 +31,24 @@
       <div class="nav-links" id="nav-links">
         <a href="/creations/index.html" class="nav-link">Créations</a>
         <a href="/memoires/index.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier/index.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque/index.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs/index.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum/index.html" class="nav-link">Défis techniques</a>
         <a href="/articles/index.html" class="nav-link">Articles</a>
-       <a href="/forum/index.html" class="nav-link">Forum</a>
         <a href="/a-propos/index.html" class="nav-link">À propos</a>
         <a href="/statistiques/index.html" class="nav-link" id="nav-stats-link" hidden>Statistiques</a>
         <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
         <div class="nav-auth-zone" id="nav-auth-zone">
           <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
           <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
-       <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- ===================== HERO — DÉFINITION DE LA FILIÈRE ===================== -->
+  <!-- ===================== HERO ===================== -->
   <header class="hero">
     <div class="gauge" aria-hidden="true">
       <svg viewBox="0 0 100 100">
@@ -68,9 +71,22 @@
 
   <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
 
+  <!-- ===================== EN CHIFFRES ===================== -->
+  <section class="stats-band" id="stats-band">
+    <div class="section-label"><span class="num">§01</span> En chiffres</div>
+    <div class="stats-band-grid" id="stats-band-grid">
+      <div class="stat-block"><span class="stat-number" id="stat-inscrits">—</span><span class="stat-label">Inscrits</span></div>
+      <div class="stat-block"><span class="stat-number" id="stat-projets">—</span><span class="stat-label">Créations & mémoires</span></div>
+      <div class="stat-block"><span class="stat-number" id="stat-defis">—</span><span class="stat-label">Défis techniques</span></div>
+      <div class="stat-block"><span class="stat-number" id="stat-clubs">—</span><span class="stat-label">Clubs actifs</span></div>
+    </div>
+  </section>
+
+  <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
+
   <!-- ===================== MISSIONS ===================== -->
   <section class="missions">
-    <div class="section-label"><span class="num">§01</span> Missions de l'ingénieur civil</div>
+    <div class="section-label"><span class="num">§02</span> Missions de l'ingénieur civil</div>
     <div class="missions-grid">
       <article class="mission-card">
         <span class="mission-index">01</span>
@@ -85,104 +101,66 @@
       <article class="mission-card">
         <span class="mission-index">03</span>
         <h3>Stabiliser un pays qui glisse</h3>
-        <p>Plus de 98% de couverture forestière perdue, un relief montagneux, des pluies violentes : une partie du métier consiste à empêcher qu'une colline ne parte avec la maison bâtie dessus — drainage, murs de soutènement, gestion des ravines.</p>
+        <p>Plus de 98% de couverture forestière perdue, un relief montagneux, des pluies violentes : une partie du métier consiste à empêcher qu'une colline ne parte avec la maison bâtie dessus.</p>
       </article>
       <article class="mission-card">
         <span class="mission-index">04</span>
-        <h3>Contrôler la qualité des matériaux locaux</h3>
-        <p>Sable, gravier, ciment, acier — vérifier ce qui entre réellement dans le béton, pas ce qui est écrit sur le sac.</p>
-      </article>
-      <article class="mission-card">
-        <span class="mission-index">05</span>
         <h3>Faire respecter une norme qui existe déjà</h3>
-        <p>Le Code National du Bâtiment d'Haïti existe depuis 2013, conçu après le séisme. Le vrai combat n'est pas de l'inventer, c'est de le faire appliquer sur des chantiers qui l'ignorent encore.</p>
-      </article>
-      <article class="mission-card">
-        <span class="mission-index">06</span>
-        <h3>Planifier routes et réseaux</h3>
-        <p>Un pays se déplace, s'alimente en eau et évacue ses eaux usées à travers ce que l'ingénieur civil a tracé sur le papier des années avant.</p>
+        <p>Le Code National du Bâtiment d'Haïti existe depuis 2013. Le vrai combat n'est pas de l'inventer, c'est de le faire appliquer sur des chantiers qui l'ignorent encore.</p>
       </article>
     </div>
   </section>
 
   <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
 
-  <!-- ===================== ATELIERS ===================== -->
-  <section class="ateliers">
-    <div class="section-label"><span class="num">§02</span> Ateliers proposés</div>
-    <p class="section-intro">Ce que la filière organise pour ses étudiants — cliquez pour le détail.</p>
+  <!-- ===================== LE CŒUR : 4 BANNIÈRES COMMUNAUTAIRES ===================== -->
+  <section class="pillars">
+    <div class="section-label"><span class="num">§03</span> Le cœur de la communauté</div>
+    <p class="section-intro">Le projet est le résultat. Ce qui suit, c'est le chemin pour y arriver — et ce qu'on en garde.</p>
 
-    <div class="ateliers-grid">
-      <button class="atelier-card" data-modal="atelier-beton">
-        <span class="atelier-icon">◧</span>
-        <h3>Béton & matériaux locaux</h3>
-        <span class="atelier-cta">Lire la description</span>
-      </button>
-      <button class="atelier-card" data-modal="atelier-calcul">
-        <span class="atelier-icon">∑</span>
-        <h3>Calcul de structures</h3>
-        <span class="atelier-cta">Lire la description</span>
-      </button>
-      <button class="atelier-card" data-modal="atelier-chantier">
-        <span class="atelier-icon">⚠</span>
-        <h3>Sécurité de chantier</h3>
-        <span class="atelier-cta">Lire la description</span>
-      </button>
-      <button class="atelier-card atelier-extra" data-modal="atelier-topo" hidden>
-        <span class="atelier-icon">◎</span>
-        <h3>Topographie & levés</h3>
-        <span class="atelier-cta">Lire la description</span>
-      </button>
+    <div class="pillars-grid">
+
+      <a href="/forum/index.html" class="pillar-card">
+        <span class="pillar-icon">⚡</span>
+        <h3>Défis techniques</h3>
+        <p>Une semelle qui ne tient pas, une erreur ETABS, un dosage qui cloche — pose la question, la communauté répond. Réponse acceptée mise en avant.</p>
+        <span class="pillar-cta">Poser un défi →</span>
+      </a>
+
+      <a href="/chantier/index.html" class="pillar-card">
+        <span class="pillar-icon">🏗</span>
+        <h3>Carnet de chantier</h3>
+        <p>Photos, difficultés rencontrées, erreurs de terrain — le journal brut d'un chantier, pas seulement le résultat fini une fois la peinture posée.</p>
+        <span class="pillar-cta">Ouvrir le carnet →</span>
+      </a>
+
+      <a href="/bibliotheque/index.html" class="pillar-card">
+        <span class="pillar-icon">📐</span>
+        <h3>Bibliothèque technique</h3>
+        <p>Cahiers des charges, métrés, devis, notes de calcul, détails constructifs — les documents qui disparaissent d'habitude à la sortie de l'université.</p>
+        <span class="pillar-cta">Explorer →</span>
+      </a>
+
+      <a href="/clubs/index.html" class="pillar-card">
+        <span class="pillar-icon">🎓</span>
+        <h3>Clubs & promotions</h3>
+        <p>Club Béton, Club Structures, Club Hydraulique, ou simplement ta promotion — retrouve les tiens et partagez votre savoir-faire, ouvert à tous.</p>
+        <span class="pillar-cta">Voir les groupes →</span>
+      </a>
+
     </div>
-    <button class="btn-outline ateliers-toggle" id="ateliers-toggle" style="margin-top:20px;">Voir davantage ↓</button>
   </section>
-
-  <!-- Modales ateliers (contenu à ajuster avec Sébastien) -->
-  <div class="modal-overlay" id="modal-atelier-beton" hidden>
-    <div class="modal-card">
-      <button class="modal-close" data-close>✕</button>
-      <div class="modal-eyebrow">Atelier</div>
-      <h2>Béton & matériaux locaux</h2>
-      <p>Formulation de béton adaptée aux granulats disponibles localement, essais de résistance, et sensibilisation aux dosages hors-norme fréquents sur les chantiers informels.</p>
-    </div>
-  </div>
-  <div class="modal-overlay" id="modal-atelier-calcul" hidden>
-    <div class="modal-card">
-      <button class="modal-close" data-close>✕</button>
-      <div class="modal-eyebrow">Atelier</div>
-      <h2>Calcul de structures</h2>
-      <p>Descente de charges, dimensionnement de poutres et poteaux, initiation aux logiciels de calcul — avec des études de cas tirées de bâtiments réels du pays.</p>
-    </div>
-  </div>
-  <div class="modal-overlay" id="modal-atelier-chantier" hidden>
-    <div class="modal-card">
-      <button class="modal-close" data-close>✕</button>
-      <div class="modal-eyebrow">Atelier</div>
-      <h2>Sécurité de chantier</h2>
-      <p>Prévention des accidents, équipements de protection, gestion des risques sur des chantiers souvent dépourvus de normes de sécurité appliquées.</p>
-    </div>
-  </div>
-  <div class="modal-overlay" id="modal-atelier-topo" hidden>
-    <div class="modal-card">
-      <button class="modal-close" data-close>✕</button>
-      <div class="modal-eyebrow">Atelier</div>
-      <h2>Topographie & levés</h2>
-      <p>Lecture de terrain, utilisation d'instruments de mesure, production de plans topographiques pour préparer une implantation fiable.</p>
-    </div>
-  </div>
 
   <div class="tape-divider" aria-hidden="true"><div class="tape-strip"></div></div>
 
   <!-- ===================== CRÉATIONS LIBRES ===================== -->
   <section class="creations">
-    <div class="section-label"><span class="num">§03</span> Créations libres des étudiants</div>
+    <div class="section-label"><span class="num">§04</span> Créations libres des étudiants</div>
     <p class="section-intro">
       Maquettes, croquis de structure, exercices personnels, essais de calcul —
-      publiés directement par l'étudiant, sans validation d'un enseignant. Un espace
-      pour explorer, pas seulement pour être noté.
+      publiés directement par l'étudiant, sans validation d'un enseignant.
     </p>
     <div class="creations-teaser">
-      <p class="teaser-note">— section connectée à la publication libre, contenu à venir —</p>
       <a href="/creations/index.html" class="btn-outline">Explorer les créations</a>
     </div>
   </section>
@@ -191,13 +169,12 @@
 
   <!-- ===================== MÉMOIRES & THÈSES ===================== -->
   <section class="memoires">
-    <div class="section-label"><span class="num">§04</span> Mémoires & thèses</div>
+    <div class="section-label"><span class="num">§05</span> Mémoires & thèses</div>
     <p class="section-intro">
       Les travaux de fin d'études des facultés d'ingénierie du pays, réunis à un seul
       endroit — pour que la recherche d'un étudiant serve à celui qui vient après lui.
     </p>
     <div class="creations-teaser">
-      <p class="teaser-note">— archive à alimenter au fil des dépôts —</p>
       <a href="/memoires/index.html" class="btn-outline">Voir les mémoires</a>
     </div>
   </section>
@@ -206,7 +183,7 @@
 
   <!-- ===================== LE NON-ARCHIVÉ ===================== -->
   <section class="non-archive">
-    <div class="section-label"><span class="num">§05</span> Ce qu'on n'archive jamais</div>
+    <div class="section-label"><span class="num">§06</span> Ce qu'on n'archive jamais</div>
     <div class="non-archive-body">
       <p class="lede">
         Un rapport de fissure griffonné sur un carnet de chantier. La technique d'un
@@ -214,45 +191,24 @@
         Une photo prise cinq minutes après un effondrement, jamais montrée à personne.
       </p>
       <p>
-        Ce n'est "pas important" seulement parce que personne ne l'a jamais demandé.
-        C'est en réalité une mémoire technique nationale qui disparaît à chaque chantier
-        démoli, à chaque contremaître qui prend sa retraite sans transmettre. Lakou
-        Génie Civil veut aussi être l'endroit où ce savoir-là trouve enfin une place.
+        Ce n'est "pas important" que parce que personne ne l'a jamais demandé. C'est une
+        mémoire technique nationale qui disparaît à chaque chantier démoli. Le Carnet de
+        chantier et la Bibliothèque technique portent tous les deux une étiquette
+        "échec instructif" — pour que l'erreur ait enfin, elle aussi, sa place.
       </p>
-      <a href="/inscription/index.html" class="btn-primary">Contribuer à cette mémoire</a>
+      <a href="/chantier/index.html" class="btn-primary">Contribuer à cette mémoire</a>
     </div>
   </section>
 
+  <!-- ===================== PROFIL ADMIN ===================== -->
+  <section class="admin-profile-band" id="admin-profile-band"></section>
+
   <footer>
     <span>LAKOU GÉNIE CIVIL © 2026</span>
-    <span>V.02</span>
+    <span>V.03</span>
   </footer>
 
-  <script>
-    document.querySelectorAll('.atelier-card').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const modal = document.getElementById('modal-' + btn.dataset.modal);
-        if (modal) modal.hidden = false;
-      });
-    });
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay || e.target.hasAttribute('data-close')) overlay.hidden = true;
-      });
-    });
-
-    // Ateliers : afficher/masquer les cartes au-delà des 3 premières
-    const ateliersToggle = document.getElementById('ateliers-toggle');
-    const ateliersExtra = document.querySelectorAll('.atelier-extra');
-    if (ateliersToggle && ateliersExtra.length > 0) {
-      ateliersToggle.addEventListener('click', () => {
-        const isHidden = ateliersExtra[0].hidden;
-        ateliersExtra.forEach(card => { card.hidden = !isHidden; });
-        ateliersToggle.textContent = isHidden ? 'Voir moins ↑' : 'Voir davantage ↓';
-      });
-    }
-  </script>
-
+  <script type="module" src="/home-app.js"></script>
   <script type="module" src="/shared/nav.js"></script>
 </body>
 </html>
