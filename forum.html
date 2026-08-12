@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis techniques — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/forum-style.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Défis techniques</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <a href="/parametres.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="forum-page">
+
+    <header class="forum-header">
+      <div class="eyebrow">Lakou Génie Civil</div>
+      <h1>Défis techniques</h1>
+      <p class="subhead">Une semelle qui ne tient pas, une erreur ETABS, un dosage qui cloche : pose ton défi, la communauté répond. Réponse acceptée mise en avant.</p>
+      <button class="btn-primary" id="new-sujet-btn" hidden>+ Poser un défi</button>
+      <p class="login-hint" id="login-hint">
+        <a href="/connexion.html">Connecte-toi</a> pour poser un défi.
+      </p>
+    </header>
+
+    <!-- ===================== CATÉGORIES ===================== -->
+    <section class="categories-strip">
+      <button class="category-chip active" data-cat="">Tous</button>
+      <span class="loading-msg" id="categories-loading">Chargement des catégories...</span>
+    </section>
+
+    <!-- ===================== LISTE DES DÉFIS ===================== -->
+    <div class="sujets-feed" id="sujets-feed">
+      <p class="loading-msg" id="loading-msg">Chargement des défis...</p>
+      <p class="empty-msg" id="empty-msg" hidden>Aucun défi pour l'instant — sois le premier à en poser un.</p>
+    </div>
+
+  </main>
+
+  <!-- ===================== MODALE NOUVEAU DÉFI ===================== -->
+  <div class="modal-overlay" id="sujet-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="sujet-modal-close" aria-label="Fermer">✕</button>
+      <div class="section-label small"><span class="num">§</span> Nouveau défi</div>
+
+      <form id="sujet-form" class="auth-form">
+        <div class="form-group">
+          <label for="sujet-categorie">Catégorie</label>
+          <select id="sujet-categorie" required></select>
+        </div>
+        <div class="form-group">
+          <label for="sujet-titre">Titre</label>
+          <input type="text" id="sujet-titre" required placeholder="Résume ton défi ou ta question">
+        </div>
+        <div class="form-group">
+          <label for="sujet-contenu">Contenu</label>
+          <textarea id="sujet-contenu" rows="6" required placeholder="Détaille ton défi technique..."></textarea>
+        </div>
+        <p class="form-error" id="sujet-error" hidden></p>
+        <button type="submit" class="btn-primary" id="sujet-submit-btn">Publier le défi</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/forum.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
