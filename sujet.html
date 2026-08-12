@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défi — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/forum-style.css">
+  <link rel="stylesheet" href="/sujet-style.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <a href="/forum.html" class="lakou-sep-link">Défis techniques</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Défi</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <a href="/parametres.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="sujet-page">
+
+    <a href="/forum.html" class="back-link">← Retour aux défis techniques</a>
+
+    <p class="loading-msg" id="loading-msg">Chargement du défi...</p>
+    <p class="empty-msg" id="not-found-msg" hidden>Ce défi n'existe pas ou a été supprimé.</p>
+
+    <article class="sujet-detail" id="sujet-detail" hidden>
+      <div class="sujet-top-row">
+        <span class="sujet-cat-tag" id="sujet-cat-tag"></span>
+        <span class="sujet-resolu-tag" id="sujet-resolu-tag" hidden>✓ Résolu</span>
+      </div>
+      <h1 id="sujet-titre"></h1>
+      <div class="sujet-meta-row" id="sujet-meta-row"></div>
+      <div class="sujet-contenu" id="sujet-contenu"></div>
+    </article>
+
+    <!-- ===================== SOLUTION ACCEPTÉE ===================== -->
+    <section class="reponse-acceptee-section" id="reponse-acceptee-section" hidden>
+      <div class="section-label"><span class="num">✓</span> Solution acceptée</div>
+      <div id="reponse-acceptee-card"></div>
+    </section>
+
+    <!-- ===================== SOLUTIONS PROPOSÉES ===================== -->
+    <section class="reponses-section" id="reponses-section" hidden>
+      <div class="section-label"><span class="num">§</span> Solutions proposées (<span id="reponses-count">0</span>)</div>
+      <div class="reponses-list" id="reponses-list"></div>
+
+      <form id="reponse-form" class="auth-form" hidden>
+        <div class="form-group">
+          <label for="reponse-contenu">Ta solution</label>
+          <textarea id="reponse-contenu" rows="4" required placeholder="Propose ta solution à ce défi..."></textarea>
+        </div>
+        <p class="form-error" id="reponse-error" hidden></p>
+        <button type="submit" class="btn-primary" id="reponse-submit-btn">Proposer cette solution</button>
+      </form>
+      <p class="login-hint" id="reponse-login-hint">
+        <a href="/connexion.html">Connecte-toi</a> pour proposer une solution.
+      </p>
+    </section>
+
+  </main>
+
+  <script type="module" src="/sujet.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
