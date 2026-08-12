@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/shared/auth.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Tableau de bord</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <a href="/parametres.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="guard-msg" class="guard-msg" hidden>
+    <p>Connecte-toi pour accéder à ton tableau de bord.</p>
+    <a href="/connexion.html" class="btn-outline">Se connecter</a>
+  </div>
+
+  <main class="dashboard" id="dashboard-page" hidden>
+
+    <header class="dashboard-header">
+      <div class="eyebrow" id="role-badge">—</div>
+      <h1>Bonjour, <span id="user-name">—</span></h1>
+    </header>
+
+    <!-- ===================== DEVENIR ENSEIGNANT ===================== -->
+    <section class="teacher-card" id="teacher-card" hidden>
+      <div class="section-label"><span class="num">§00</span> Devenir enseignant</div>
+      <p class="section-intro">Explique en quelques lignes pourquoi tu devrais avoir le statut enseignant (institution, matière enseignée...). Un administrateur examine chaque demande.</p>
+      <div id="teacher-request-status"></div>
+      <form id="teacher-request-form">
+        <div class="form-group">
+          <label for="justification">Justification</label>
+          <textarea id="justification" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="institution">Institution (optionnel)</label>
+          <input type="text" id="institution">
+        </div>
+        <button type="submit" class="btn-primary" id="teacher-request-btn">Envoyer la demande</button>
+      </form>
+    </section>
+
+    <!-- ===================== MES CONTRIBUTIONS ===================== -->
+    <section>
+      <div class="section-label"><span class="num">§01</span> Mes projets</div>
+      <div class="dash-list" id="my-projects"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouveau-projet.html" class="btn-outline">+ Nouveau projet</a>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="num">§02</span> Mes créations</div>
+      <div class="dash-list" id="my-creations"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouvelle-creation.html" class="btn-outline">+ Nouvelle création</a>
+    </section>
+
+    <section>
+      <div class="section-label"><span class="num">§03</span> Mes mémoires</div>
+      <div class="dash-list" id="my-memoires"><p class="loading-msg">Chargement...</p></div>
+      <a href="/nouveau-memoire.html" class="btn-outline">+ Nouveau mémoire</a>
+    </section>
+
+    <!-- ===================== VALIDATION (enseignant/admin) ===================== -->
+    <section id="validation-section" hidden>
+      <div class="section-label"><span class="num">§04</span> En attente de validation</div>
+      <div class="dash-list" id="pending-validation"></div>
+    </section>
+
+    <!-- ===================== DEMANDES ENSEIGNANT (admin) ===================== -->
+    <section id="teacher-requests-section" hidden>
+      <div class="section-label"><span class="num">§05</span> Demandes enseignant en attente</div>
+      <div class="dash-list" id="pending-teacher-requests"></div>
+    </section>
+
+    <!-- ===================== STATISTIQUES (admin) — fusionné depuis /statistiques/ ===================== -->
+    <section id="stats-section" hidden>
+      <div class="section-label"><span class="num">§06</span> Statistiques de la plateforme</div>
+      <button id="send-report-btn" class="btn-primary" type="button">Envoyer le rapport</button>
+
+      <div class="stats-cards" style="margin-top:16px;">
+        <div class="stat-card"><span class="stat-value" id="count-total">—</span><span class="stat-label">Inscrits</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-etudiants">—</span><span class="stat-label">Étudiants</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-enseignants">—</span><span class="stat-label">Enseignants</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-demandes">—</span><span class="stat-label">Demandes enseignant en attente</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-brouillon">—</span><span class="stat-label">Projets brouillon</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-soumis">—</span><span class="stat-label">Projets soumis</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-valide">—</span><span class="stat-label">Projets validés</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-rejete">—</span><span class="stat-label">Projets rejetés</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-creations">—</span><span class="stat-label">Créations libres</span></div>
+        <div class="stat-card"><span class="stat-value" id="count-creations-masquees">—</span><span class="stat-label">Créations masquées</span></div>
+      </div>
+
+      <div class="stats-chart" style="margin-top:24px;">
+        <div class="section-label"><span class="num">§06.1</span> Inscriptions — 6 derniers mois</div>
+        <canvas id="activity-chart" height="90"></canvas>
+      </div>
+
+      <div class="stats-registrants" style="margin-top:24px;">
+        <div class="section-label"><span class="num">§06.2</span> Derniers inscrits</div>
+        <table class="registrants-table">
+          <thead>
+            <tr><th>Nom</th><th>Rôle</th><th>École</th><th>Inscrit le</th></tr>
+          </thead>
+          <tbody id="registrants-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.03</span>
+  </footer>
+
+  <script type="module" src="/dashboard.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
