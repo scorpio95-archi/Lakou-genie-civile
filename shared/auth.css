@@ -77,6 +77,22 @@
   border-color: var(--safety);
 }
 
+/* Ajout : select absent de l'original — nécessaire pour le menu École d'inscription.html */
+.form-group select{
+  background: var(--concrete-dark);
+  border: 1px solid var(--mortar);
+  color: var(--paper);
+  padding: 12px 14px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-group select:focus{
+  outline: none;
+  border-color: var(--safety);
+}
+
 .form-error{
   font-family: 'Space Mono', monospace;
   font-size: 12px;
