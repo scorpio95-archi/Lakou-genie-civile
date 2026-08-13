@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/shared/auth.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Inscription</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="eyebrow">Lakou Génie Civil</div>
+      <h1>Inscription</h1>
+      <p class="subhead">Ton compte est créé en tant qu'étudiant. Le statut enseignant s'obtient ensuite sur demande, depuis ton tableau de bord.</p>
+
+      <div id="form-msg"></div>
+
+      <form class="auth-form" id="signup-form">
+        <div class="form-group">
+          <label for="full_name">Nom complet</label>
+          <input type="text" id="full_name" name="full_name" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="school-select">École</label>
+          <select id="school-select" required>
+            <option value="" disabled selected>Choisis ton école</option>
+            <option value="__autre__">Autre (préciser)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="school-other-group" hidden>
+          <label for="school-other">Précise ton école</label>
+          <input type="text" id="school-other" name="school-other" placeholder="Nom de l'établissement">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password">
+        </div>
+
+        <button type="submit" class="btn-primary" id="submit-btn">Créer mon compte</button>
+      </form>
+
+      <p class="auth-switch">Déjà inscrit ? <a href="/connexion.html">Se connecter</a></p>
+      <p class="auth-legal">
+        En t'inscrivant, tu acceptes les
+        <a href="/confidentialite.html">conditions et la politique de confidentialité</a> de Lakou Inivesite.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.03</span>
+  </footer>
+
+  <script type="module" src="signup.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
