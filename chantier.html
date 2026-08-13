@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnet de chantier — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Carnet de chantier</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="section-header">
+      <p class="eyebrow">Lakou Génie Civil</p>
+      <h1>Carnet de chantier</h1>
+      <p class="subhead">Le journal du processus — ce qui a été essayé, ce qui a raté, ce qu'on a appris sur le terrain.</p>
+    </header>
+
+    <div id="chantier-loading" class="loading-state">Chargement…</div>
+    <div id="chantier-empty" class="empty-state" hidden>Aucune entrée publiée pour l'instant.</div>
+    <div id="chantier-grid" class="gallery-grid"></div>
+  </main>
+
+  <a href="/nouvelle-entree-chantier.html" class="fab-add" id="fab-add" aria-label="Ajouter une entrée">+</a>
+
+  <div class="modal-overlay" id="entree-modal-overlay" hidden>
+    <div class="modal-card detail-modal-card">
+      <button type="button" class="modal-close" id="entree-modal-close" aria-label="Fermer">✕</button>
+      <div id="entree-modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.03</span>
+  </footer>
+
+  <script type="module" src="chantier.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
