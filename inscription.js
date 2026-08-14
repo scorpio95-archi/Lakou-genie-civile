@@ -1,4 +1,4 @@
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 const schoolSelect = document.getElementById('school-select');
 const schoolOtherGroup = document.getElementById('school-other-group');
@@ -74,7 +74,7 @@ form.addEventListener('submit', async (e) => {
       password,
       options: {
         data: { full_name: fullName, school },
-        emailRedirectTo: `${window.location.origin}/connexion/index.html`,
+        emailRedirectTo: `${window.location.origin}/connexion.html`,
       },
     };
 
@@ -98,7 +98,7 @@ form.addEventListener('submit', async (e) => {
 
     if (data.session) {
       // Confirmation par email désactivée — session immédiate
-      window.location.href = '/index.html';
+      window.location.href = "/index.html";
       return;
     }
 
