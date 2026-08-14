@@ -1,5 +1,5 @@
 // ===================== CLIENT SUPABASE PARTAGÉ =====================
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 // ===================== ÉTAT LOCAL =====================
 let allProjects = [];   // tous les projets validés chargés une fois
