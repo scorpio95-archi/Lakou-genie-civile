@@ -1,5 +1,5 @@
 // chantier.js
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 const grid = document.getElementById('chantier-grid');
 const loadingEl = document.getElementById('chantier-loading');
