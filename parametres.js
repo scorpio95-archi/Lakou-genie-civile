@@ -2,7 +2,7 @@
 // Corrigé : utilisait un client à part avec URL/clé codées en dur.
 // Aligné maintenant sur le reste du site (même singleton que nav.js,
 // stats.js, dashboard.js, home-app.js).
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 /* ⚠️ DEUX POINTS ENCORE NON CONFIRMÉS — je ne les ai pas changés car
    aucune preuve dans ce que j'ai vu ne dit qu'ils sont faux (contrairement
