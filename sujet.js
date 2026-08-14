@@ -1,4 +1,4 @@
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 const BADGE_LABELS = {
   expert_verifie: '✓ Expert vérifié',
