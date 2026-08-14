@@ -69,7 +69,7 @@ async function initAuthState() {
     const firstName = (profile?.full_name || 'Compte').split(' ')[0];
     authZone.innerHTML = `
       <span class="nav-link nav-greeting">Bonjour ${firstName}</span>
-      <a href="/tableau-de-bord/index.html" class="nav-link nav-cta">Tableau de bord</a>
+      <a href="/tableau-de-bord.html" class="nav-link nav-cta">Tableau de bord</a>
       <button class="nav-link nav-cta-outline" id="nav-logout-btn" type="button">Déconnexion</button>
     `;
     document.getElementById('nav-logout-btn').addEventListener('click', async () => {
