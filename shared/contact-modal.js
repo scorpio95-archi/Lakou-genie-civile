@@ -5,7 +5,7 @@
 //   - étudiant / visiteur -> Suggestion / Autre -> admin_email
 //   - admin               -> 5 catégories       -> owner_email
 
-import { supabase } from './supabase-client.js';
+import { supabase } from './client-supabase.js';
 
 const EDGE_FUNCTION_URL = 'https://vvizvjmvesjenuetsxyq.supabase.co/functions/v1/send-network-email';
 const SUPABASE_ANON_KEY = 'sb_publishable_6vv-OVHoOw2xCbKTbEOp8g_nRqdP7wc';
