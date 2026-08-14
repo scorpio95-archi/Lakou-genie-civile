@@ -1,4 +1,4 @@
-// shared/supabase-client.js
+// shared/client-supabase.js
 // Singleton — importé par toutes les pages du site (app.js, nav.js, stats.js, etc.)
 // Le garde `window.supabaseClient` empêche la création de plusieurs GoTrueClient
 // si plusieurs scripts créaient chacun leur propre createClient().
