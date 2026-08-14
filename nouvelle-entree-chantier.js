@@ -1,5 +1,5 @@
 // nouvelle-entree-chantier.js
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 const authGate = document.getElementById('auth-gate');
 const form = document.getElementById('entree-form');
