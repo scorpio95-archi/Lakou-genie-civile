@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déposer un document — Lakou Génie Civil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/nav.css">
+  <link rel="stylesheet" href="/shared/style.css">
+  <link rel="stylesheet" href="/shared/contact-modal.css">
+</head>
+<body class="frame">
+
+  <div class="lakou-network-bar">
+    <a href="https://lakou-inivesite.vercel.app/">🏠 Lakou Inivesite</a>
+    <span class="lakou-sep">›</span>
+    <a href="https://lakou-enjenye26.vercel.app/" class="lakou-sep-link">Lakou Enjenyè</a>
+    <span class="lakou-sep">›</span>
+    <a href="/index.html" class="lakou-sep-link">Génie Civil</a>
+    <span class="lakou-sep">›</span>
+    <a href="/bibliotheque.html" class="lakou-sep-link">Bibliothèque technique</a>
+    <span class="lakou-sep">›</span>
+    <span class="lakou-current">Déposer</span>
+  </div>
+
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <span class="nav-logo-mark">LGC</span>
+        <span class="nav-logo-text">Lakou Génie Civil</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/index.html" class="nav-link">Accueil</a>
+        <a href="/creations.html" class="nav-link">Créations</a>
+        <a href="/memoires.html" class="nav-link">Mémoires & thèses</a>
+        <a href="/chantier.html" class="nav-link">Carnet de chantier</a>
+        <a href="/bibliotheque.html" class="nav-link">Bibliothèque technique</a>
+        <a href="/clubs.html" class="nav-link">Clubs & promotions</a>
+        <a href="/forum.html" class="nav-link">Défis techniques</a>
+        <a href="/articles.html" class="nav-link">Articles</a>
+        <a href="/a-propos.html" class="nav-link">À propos</a>
+        <a href="/parametres.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+        <div class="nav-auth-zone" id="nav-auth-zone">
+          <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+          <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+          <button type="button" id="nav-contact-btn" class="nav-link nav-cta nav-cta-outline">Contactez-nous</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="form-page-wrap">
+    <header class="section-header" style="padding-left:0; padding-right:0; text-align:left;">
+      <p class="eyebrow">Bibliothèque technique</p>
+      <h1>Déposer un document</h1>
+      <p class="subhead">Ton dépôt sera examiné avant publication.</p>
+    </header>
+
+    <div id="auth-gate" class="empty-state" hidden>
+      <a href="/connexion.html">Connecte-toi</a> pour déposer un document.
+    </div>
+
+    <form id="doc-form" class="content-form">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="type_document">Type de document</label>
+        <select id="type_document" name="type_document" required>
+          <option value="cahier_charges">Cahier des charges</option>
+          <option value="metre">Métré</option>
+          <option value="devis">Devis</option>
+          <option value="bordereau">Bordereau</option>
+          <option value="rapport_technique">Rapport technique</option>
+          <option value="note_calcul">Note de calcul</option>
+          <option value="detail_constructif">Détail constructif</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="doc_file">Fichier (PDF, image, document)</label>
+        <input type="file" id="doc_file" name="doc_file" required>
+      </div>
+
+      <div class="form-group-checkbox">
+        <input type="checkbox" id="est_echec_instructif" name="est_echec_instructif">
+        <label for="est_echec_instructif">Échec instructif — variante rejetée, erreur, étude abandonnée</label>
+      </div>
+
+      <p class="form-error" id="form-msg" hidden></p>
+      <button type="submit" class="btn-primary" id="submit-btn">Envoyer pour validation</button>
+    </form>
+  </main>
+
+  <footer>
+    <span>LAKOU GÉNIE CIVIL © 2026</span>
+    <span>V.03</span>
+  </footer>
+
+  <script type="module" src="/nouveau-document-bibliotheque.js"></script>
+  <script type="module" src="/shared/nav.js"></script>
+</body>
+</html>
