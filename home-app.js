@@ -2,7 +2,7 @@
 // Alimente §01 (stats en direct) et le profil admin en bas de page.
 // Réutilise le client partagé déjà en place ailleurs sur le site —
 // aucun nouveau client créé, pas de risque de doublon GoTrueClient.
-import { supabase } from '/shared/supabase-client.js';
+import { supabase } from '/shared/client-supabase.js';
 
 async function loadStats(){
   const [{ count: inscrits }, { count: projets }, { count: creations },
