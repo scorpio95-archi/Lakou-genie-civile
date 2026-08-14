@@ -42,6 +42,7 @@
         <a href="/forum.html" class="nav-link">Défis techniques</a>
         <a href="/articles.html" class="nav-link">Articles</a>
         <a href="/a-propos.html" class="nav-link">À propos</a>
+        <a href="/parametres.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
         <div class="nav-auth-zone" id="nav-auth-zone">
           <a href="/connexion.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
           <a href="/inscription.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
@@ -55,47 +56,42 @@
     <div class="auth-card">
       <div class="eyebrow">Lakou Génie Civil</div>
       <h1>Inscription</h1>
-      <p class="subhead">Ton compte est créé en tant qu'étudiant. Le statut enseignant s'obtient ensuite sur demande, depuis ton tableau de bord.</p>
+      <p class="auth-sub">Crée ton compte étudiant ou enseignant.</p>
 
-      <div id="form-msg"></div>
-
-      <form class="auth-form" id="signup-form">
+      <form id="signup-form" class="auth-form">
         <div class="form-group">
           <label for="full_name">Nom complet</label>
-          <input type="text" id="full_name" name="full_name" required autocomplete="name">
+          <input type="text" id="full_name" required>
         </div>
 
         <div class="form-group">
           <label for="school-select">École</label>
           <select id="school-select" required>
-            <option value="" disabled selected>Choisis ton école</option>
+            <option value="">Choisis ton établissement</option>
             <option value="__autre__">Autre (préciser)</option>
           </select>
         </div>
 
         <div class="form-group" id="school-other-group" hidden>
-          <label for="school-other">Précise ton école</label>
-          <input type="text" id="school-other" name="school-other" placeholder="Nom de l'établissement">
+          <label for="school-other">Nom de ton école</label>
+          <input type="text" id="school-other">
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
+          <input type="email" id="email" required autocomplete="username">
         </div>
 
         <div class="form-group">
           <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password">
+          <input type="password" id="password" required minlength="6" autocomplete="new-password">
         </div>
 
+        <p class="form-error" id="form-msg" hidden></p>
         <button type="submit" class="btn-primary" id="submit-btn">Créer mon compte</button>
       </form>
 
       <p class="auth-switch">Déjà inscrit ? <a href="/connexion.html">Se connecter</a></p>
-      <p class="auth-legal">
-        En t'inscrivant, tu acceptes les
-        <a href="/confidentialite.html">conditions et la politique de confidentialité</a> de Lakou Inivesite.
-      </p>
     </div>
   </main>
 
@@ -104,7 +100,7 @@
     <span>V.03</span>
   </footer>
 
-  <script type="module" src="signup.js"></script>
+  <script type="module" src="/inscription.js"></script>
   <script type="module" src="/shared/nav.js"></script>
 </body>
 </html>
