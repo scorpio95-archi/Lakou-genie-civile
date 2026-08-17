@@ -16,7 +16,7 @@ import { supabase } from './client-supabase.js';
       closeBtn.type = 'button';
       closeBtn.className = 'nav-close-btn';
       closeBtn.setAttribute('aria-label', 'Fermer le menu');
-      closeBtn.innerHTML = '✕ Fermer le menu';
+      closeBtn.innerHTML = '✕';
       closeBtn.addEventListener('click', () => {
         links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
@@ -66,12 +66,34 @@ async function initAuthState() {
   if (statsLink) statsLink.hidden = !(profile && profile.role === 'admin');
 
   if (authZone) {
+    // Corrigé : on ne détruit plus tout le contenu de la zone avec innerHTML
+    // (ça effaçait le bouton Contact, et même en le remettant dans le HTML,
+    // contact-modal.js avait déjà attaché son écouteur à l'ancien bouton —
+    // le nouveau n'aurait jamais réagi au clic). On retire seulement
+    // Connexion/Inscription et on insère la salutation + Tableau de bord +
+    // Déconnexion avant le bouton Contact, qui reste le même nœud DOM.
+    const loginLink = document.getElementById('nav-login-link');
+    const signupLink = document.getElementById('nav-signup-link');
+    const contactBtn = document.getElementById('nav-contact-btn');
+
+    if (loginLink) loginLink.remove();
+    if (signupLink) signupLink.remove();
+
     const firstName = (profile?.full_name || 'Compte').split(' ')[0];
-    authZone.innerHTML = `
+    const wrapper = document.createElement('div');
+    wrapper.className = 'nav-auth-authenticated';
+    wrapper.innerHTML = `
       <span class="nav-link nav-greeting">Bonjour ${firstName}</span>
       <a href="/tableau-de-bord.html" class="nav-link nav-cta">Tableau de bord</a>
       <button class="nav-link nav-cta-outline" id="nav-logout-btn" type="button">Déconnexion</button>
     `;
+
+    if (contactBtn) {
+      authZone.insertBefore(wrapper, contactBtn);
+    } else {
+      authZone.appendChild(wrapper);
+    }
+
     document.getElementById('nav-logout-btn').addEventListener('click', async () => {
       await supabase.auth.signOut();
       window.location.href = '/index.html';
