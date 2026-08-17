@@ -77,11 +77,34 @@
           </div>
         </div>
 
-        <form id="profile-form" class="auth-form">
+        <form id="profile-form" class="auth-form content-form">
           <div class="form-group">
             <label for="full-name">Nom complet</label>
             <input type="text" id="full-name" required>
           </div>
+
+          <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea id="bio" placeholder="Quelques mots sur toi..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="school">École</label>
+            <input type="text" id="school" placeholder="Ton établissement">
+          </div>
+
+          <div class="form-group" id="level-group" hidden>
+            <label for="level">Niveau</label>
+            <select id="level">
+              <option value="">—</option>
+              <option value="L1">L1</option>
+              <option value="L2">L2</option>
+              <option value="L3">L3</option>
+              <option value="M1">M1</option>
+              <option value="M2">M2</option>
+            </select>
+          </div>
+
           <p class="form-error" id="profile-error" hidden></p>
           <p class="form-success" id="profile-success" hidden>Profil mis à jour.</p>
           <button type="submit" class="btn-primary" id="profile-submit-btn">Enregistrer</button>
@@ -92,7 +115,7 @@
       <section class="settings-section">
         <div class="section-label"><span class="num">§02</span> Mot de passe</div>
 
-        <form id="password-form" class="auth-form">
+        <form id="password-form" class="auth-form content-form">
           <div class="form-group">
             <label for="new-password">Nouveau mot de passe</label>
             <input type="password" id="new-password" required minlength="6">
@@ -107,10 +130,10 @@
         </form>
       </section>
 
-      <!-- ===================== COMPTE ===================== -->
-      <section class="settings-section">
-        <div class="section-label"><span class="num">§03</span> Compte</div>
-        <button type="button" class="btn-outline" id="logout-btn">Déconnexion</button>
+      <!-- ===================== COMPTE — ZONE ROUGE ===================== -->
+      <section class="settings-section danger-zone">
+        <div class="section-label"><span class="num">§03</span> Zone de danger</div>
+        <p class="danger-zone-text">Supprimer ton compte efface définitivement ton profil et retire ton accès. Cette action est irréversible.</p>
         <button type="button" class="btn-outline btn-danger" id="delete-account-btn">Supprimer mon compte</button>
       </section>
 
