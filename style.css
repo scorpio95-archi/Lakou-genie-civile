@@ -707,199 +707,300 @@ footer{
 .btn-danger:hover{ background: var(--error); color: var(--paper) !important; }
 
 /* ============================================================
-   GALERIES COMMUNAUTAIRES (chantier.html / bibliotheque.html / clubs.html)
-   Composants partagés : en-tête, grille, carte, badges, bouton flottant,
-   modal détail + carousel, formulaire de dépôt générique.
-   Nouveau — ces pages n'existaient pas, donc pas de fusion ici.
+   PAGES DE SOUMISSION (nouveau-projet, nouvelle-creation, nouveau-memoire)
    ============================================================ */
-.section-header{
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 56px 8vw 24px;
-  text-align: center;
-}
-.section-header h1{ margin-top: 10px; }
-.section-header .subhead{ margin-top: 10px; }
+.submit-page{ position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 40px 8vw 100px; }
+.submit-card{ background: var(--concrete-panel); border: 1px solid var(--mortar); padding: 28px 24px; }
+.file-hint{ display: block; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--steel); margin-top: 6px; }
+.submit-actions{ display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--mortar); }
+.section-label.small{ font-size: 11px; margin: 24px 0 14px; }
+.section-intro.small{ font-size: 0.82rem; color: var(--steel); margin-bottom: 10px; }
 
-.loading-state,
-.empty-state{
-  text-align: center;
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  color: var(--steel);
-  padding: 40px 20px;
+/* ============================================================
+   LISTES (memoires.html — même moule pour creations/projets)
+   ============================================================ */
+.listing-header{
+  position: relative; z-index: 1; max-width: 780px; margin: 0 auto;
+  padding: 48px 8vw 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
 }
-.empty-state a{ color: var(--safety); }
+.listing-header .btn-primary{ margin-top: 6px; }
+.grid{
+  position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 20px 8vw 100px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px;
+}
+.modal-cover{ width: 100%; aspect-ratio: 16/10; object-fit: cover; margin-bottom: 16px; border: 1px solid var(--mortar); }
+.modal-creator{ font-family: 'Space Mono', monospace; font-size: 12px; color: var(--steel); margin: 10px 0 16px; }
 
-.gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 8vw 120px;
-}
+.item-card{ background: var(--concrete-panel); border: 1px solid var(--mortar); overflow: hidden; cursor: pointer; transition: border-color .2s ease; }
+.item-card:hover{ border-color: var(--rust); }
+.item-card .cover{ width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; background: var(--concrete-dark); }
+.item-card .card-body{ padding: 16px 18px; }
+.item-card .card-eyebrow{ font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: var(--safety); }
+.item-card h3{ font-family: 'Oswald', 'Archivo', sans-serif; text-transform: uppercase; font-size: 1rem; font-weight: 600; margin: 8px 0; }
+.item-card .card-desc{ font-size: 0.85rem; color: var(--steel); line-height: 1.5; margin-bottom: 10px; }
+.item-card .card-meta{ font-family: 'Space Mono', monospace; font-size: 11px; color: var(--steel); }
 
-.gallery-card{
-  background: var(--concrete-panel);
-  border: 1px solid var(--mortar);
-  cursor: pointer;
-  transition: border-color .2s ease;
-  display: flex;
-  flex-direction: column;
-}
-.gallery-card:hover{ border-color: var(--safety); }
-
-.gallery-card-image{
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  background: var(--concrete-dark);
-  display: block;
-}
-.gallery-card-image.placeholder{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--steel);
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-}
-
-.gallery-card-body{ padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.gallery-card-title{ font-family: 'Oswald', 'Archivo', sans-serif; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .3px; }
-.gallery-card-meta{ font-family: 'Space Mono', monospace; font-size: 11px; color: var(--steel); }
-.gallery-card-badge-row{ margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; }
-
-.badge-echec{
-  display: inline-block;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  color: var(--rust);
-  border: 1px solid var(--rust);
-  padding: 3px 8px;
-}
-.badge-pending{
-  display: inline-block;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  color: var(--steel);
-  border: 1px solid var(--steel);
-  padding: 3px 8px;
-}
-
+/* ============================================================
+   BOUTON FLOTTANT "+" (chantier, bibliotheque, clubs)
+   ============================================================ */
 .fab-add{
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--rust);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  line-height: 1;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.4);
-  z-index: 500;
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--rust); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; font-weight: 700; text-decoration: none; line-height: 1;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   transition: background .2s ease, transform .2s ease;
 }
 .fab-add:hover{ background: var(--safety); color: var(--ink); transform: scale(1.05); }
 
-.detail-modal-card{ max-width: 640px; }
-.detail-carousel{ position: relative; margin-bottom: 20px; }
-.detail-carousel-track{
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  background: var(--concrete-dark);
+/* ============================================================
+   ARTICLES (articles.html)
+   ============================================================ */
+.articles-feed{ position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 20px 8vw 100px; display: flex; flex-direction: column; gap: 18px; }
+.article-card{ background: var(--concrete-panel); border: 1px solid var(--mortar); padding: 20px 22px; }
+.article-author-row{ display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.article-author-row .author-avatar{ width: 34px; height: 34px; border-radius: 50%; object-fit: cover; background: var(--mortar); }
+.author-info{ display: flex; flex-direction: column; flex: 1; }
+.author-name{ font-family: 'Oswald', 'Archivo', sans-serif; font-size: 0.9rem; font-weight: 600; }
+.author-meta{ font-family: 'Space Mono', monospace; font-size: 10.5px; color: var(--steel); }
+.article-actions{ display: flex; gap: 8px; }
+.article-actions button{
+  background: none; border: 1px solid var(--mortar); color: var(--steel);
+  font-family: 'Space Mono', monospace; font-size: 10px; padding: 4px 10px; cursor: pointer;
 }
-.detail-carousel-nav{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,.5);
-  color: var(--paper);
-  border: none;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-size: 16px;
+.article-actions button:hover{ border-color: var(--rust); color: var(--rust); }
+.article-card h3{ font-family: 'Oswald', 'Archivo', sans-serif; text-transform: uppercase; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+.article-content{ font-size: 0.92rem; line-height: 1.65; color: var(--paper); white-space: pre-wrap; }
+.article-file-link{ display: inline-block; margin-top: 12px; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--safety); text-decoration: none; }
+.article-link-card{
+  display: block; border: 1px solid var(--mortar); text-decoration: none; color: inherit; margin-top: 8px; overflow: hidden;
 }
-.detail-carousel-prev{ left: 8px; }
-.detail-carousel-next{ right: 8px; }
-.detail-carousel-count{
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(0,0,0,.6);
-  color: var(--paper);
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  padding: 3px 8px;
-}
+.article-link-card img{ width: 100%; max-height: 220px; object-fit: cover; display: block; }
+.link-card-body{ padding: 12px 16px; }
+.link-card-title{ font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; }
+.link-card-url{ font-family: 'Space Mono', monospace; font-size: 11px; color: var(--steel); margin-top: 4px; }
 
-.detail-meta-row{ display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 16px; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--steel); }
-.detail-section-label{ font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--rust); margin-top: 20px; margin-bottom: 6px; }
-.detail-body-text{ font-size: .92rem; line-height: 1.6; color: var(--paper); white-space: pre-wrap; }
+.type-btn{
+  background: none; border: 1px solid var(--mortar); color: var(--steel);
+  font-family: 'Space Mono', monospace; font-size: 12px; padding: 8px 16px; cursor: pointer; margin-right: 8px;
+}
+.type-btn.active{ border-color: var(--safety); color: var(--safety); }
 
-/* ----- Formulaire de dépôt générique (nouvelle-entree-chantier.html et suivants) ----- */
-.form-page-wrap{ max-width: 640px; margin: 0 auto; padding: 0 8vw 100px; }
+.link-preview-card{ border: 1px solid var(--mortar); margin-top: 10px; padding: 10px; display: flex; gap: 10px; align-items: center; }
+.link-preview-card img{ width: 60px; height: 60px; object-fit: cover; flex-shrink: 0; }
+
+/* ============================================================
+   CHAMPS DE FORMULAIRE — base manquante, utilisée par toutes
+   les pages avec .form-group (chantier, bibliotheque, clubs,
+   forum, sujet, parametres, connexion, inscription...)
+   ============================================================ */
 .content-form{ display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
-
 .form-group{ display: flex; flex-direction: column; gap: 6px; }
 .form-group label{
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--steel);
+  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--steel);
 }
-.form-group input,
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group input[type="date"],
 .form-group select,
 .form-group textarea{
   background: var(--concrete-dark);
   border: 1px solid var(--mortar);
   color: var(--paper);
-  padding: 12px 14px;
   font-family: 'Archivo', sans-serif;
-  font-size: .95rem;
+  font-size: 0.95rem;
+  padding: 11px 14px;
+  width: 100%;
 }
-.form-group textarea{ resize: vertical; min-height: 100px; }
+.form-group input::placeholder,
+.form-group textarea::placeholder{ color: var(--steel); opacity: .7; }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus{ outline: none; border-color: var(--safety); }
+.form-group textarea:focus{ outline: none; border-color: var(--rust); }
+.form-group textarea{ resize: vertical; min-height: 90px; font-family: 'Archivo', sans-serif; }
+.form-group select{
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--steel) 50%), linear-gradient(135deg, var(--steel) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.form-group input[type="file"]{
+  color: var(--steel); font-family: 'Space Mono', monospace; font-size: 12px;
+}
+.form-group input[type="file"]::file-selector-button{
+  background: var(--concrete-panel); border: 1px solid var(--mortar); color: var(--paper);
+  font-family: 'Space Mono', monospace; font-size: 11px; padding: 8px 14px; margin-right: 10px; cursor: pointer;
+}
+.form-group input[type="file"]::file-selector-button:hover{ border-color: var(--rust); }
 
-.form-group-checkbox{ display: flex; align-items: center; flex-direction: row; gap: 8px; }
-.form-group-checkbox input{ width: auto; accent-color: var(--rust); }
-.form-group-checkbox label{ text-transform: none; letter-spacing: 0; font-family: 'Archivo', sans-serif; font-size: .88rem; color: var(--paper); }
+.form-group-checkbox{ display: flex; align-items: flex-start; gap: 10px; }
+.form-group-checkbox input[type="checkbox"]{
+  width: 18px; height: 18px; margin-top: 2px; accent-color: var(--rust); flex-shrink: 0;
+}
+.form-group-checkbox label{
+  font-family: 'Archivo', sans-serif; font-size: 0.85rem; color: var(--steel); text-transform: none; letter-spacing: normal;
+}
 
-.form-error{
+.form-error{ color: var(--error); font-size: 0.85rem; font-family: 'Space Mono', monospace; }
+.form-success{ color: var(--success); font-size: 0.85rem; font-family: 'Space Mono', monospace; }
+
+/* ============================================================
+   À PROPOS (guide d'usage + confidentialité fusionnés)
+   ============================================================ */
+.guide-page{ position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 44px 8vw 100px; }
+.guide-toc{ display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 36px; }
+.guide-toc a{
+  font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .4px;
+  color: var(--steel); border: 1px solid var(--mortar); padding: 6px 14px; text-decoration: none;
+}
+.guide-toc a:hover{ border-color: var(--safety); color: var(--safety); }
+.guide-block{ margin-bottom: 38px; scroll-margin-top: 90px; }
+.guide-block h2{
+  font-family: 'Oswald', 'Archivo', sans-serif; text-transform: uppercase; font-weight: 700;
+  font-size: 1.15rem; letter-spacing: .3px; color: var(--paper); margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--mortar);
+}
+.guide-block p{ font-size: 0.94rem; line-height: 1.7; color: var(--steel); margin-bottom: 12px; }
+.guide-block p strong{ color: var(--paper); }
+.guide-block ul{ margin: 10px 0 10px 20px; }
+.guide-block li{ font-size: 0.9rem; line-height: 1.7; color: var(--steel); margin-bottom: 4px; }
+.guide-block li strong{ color: var(--paper); }
+
+/* ============================================================
+   TABLEAU DE BORD (tableau-de-bord.html)
+   ============================================================ */
+.dashboard{ position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 40px 8vw 100px; }
+.dashboard-header{ margin-bottom: 30px; }
+.dashboard-header .eyebrow{ margin-bottom: 6px; }
+.dashboard-header h1{
+  font-family: 'Oswald', 'Archivo', sans-serif; text-transform: uppercase;
+  font-size: clamp(2rem, 6vw, 2.6rem); font-weight: 700; line-height: 1.05;
+}
+.role-tag{
+  display: inline-block; margin-top: 10px;
+  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
+  color: var(--ink); background: var(--safety); padding: 3px 10px;
+}
+
+.settings-section, .dashboard > section{ margin-bottom: 34px; padding-bottom: 28px; border-bottom: 1px solid var(--mortar); }
+.settings-section:last-child, .dashboard > section:last-child{ border-bottom: none; }
+
+.dash-list{ display: flex; flex-direction: column; gap: 10px; margin: 14px 0 16px; }
+.dash-item{
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  background: var(--concrete-panel); border: 1px solid var(--mortar); padding: 14px 16px;
+}
+.dash-title{ font-family: 'Oswald', 'Archivo', sans-serif; font-size: 0.92rem; font-weight: 600; }
+.dash-meta{ font-family: 'Space Mono', monospace; font-size: 11px; color: var(--steel); }
+.dash-actions{ display: flex; gap: 8px; }
+.status-badge{
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .4px; text-transform: uppercase;
+  padding: 3px 9px; border: 1px solid var(--mortar);
+}
+.status-badge.brouillon{ color: var(--steel); }
+.status-badge.soumis{ color: var(--safety); border-color: var(--safety); }
+.status-badge.valide{ color: var(--success); border-color: var(--success); }
+.status-badge.rejete{ color: var(--error); border-color: var(--error); }
+
+.empty-note{ font-family: 'Archivo', sans-serif; font-size: 0.88rem; color: var(--steel); margin-bottom: 14px; }
+
+.approve-btn, .reject-btn{
+  font-family: 'Space Mono', monospace; font-size: 11px; padding: 6px 12px; cursor: pointer; border: 1px solid;
+}
+.approve-btn{ background: none; border-color: var(--success); color: var(--success); }
+.approve-btn:hover{ background: var(--success); color: var(--ink); }
+.reject-btn{ background: none; border-color: var(--error); color: var(--error); }
+.reject-btn:hover{ background: var(--error); color: var(--paper); }
+
+.stats-hero{
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  background: var(--concrete-panel); border: 1px solid var(--mortar);
+  padding: 16px 18px;
+}
+.stats-hero-value{ font-family: 'Oswald', 'Archivo', sans-serif; font-size: 2.1rem; font-weight: 700; color: var(--safety); line-height: 1; }
+.stats-hero-label{ font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .4px; color: var(--steel); }
+
+.stats-group{ margin-top: 16px; }
+.stats-group-label{
+  font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--steel); margin-bottom: 6px;
+}
+.stats-cards{ display: grid; grid-template-columns: repeat(auto-fit, minmax(82px, 1fr)); gap: 2px; background: var(--mortar); border: 1px solid var(--mortar); }
+.stat-card{ background: var(--concrete-dark); padding: 10px 8px; text-align: center; }
+.stat-value{ display: block; font-family: 'Oswald', 'Archivo', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--safety); }
+.stat-label{ display: block; font-family: 'Space Mono', monospace; font-size: 8.5px; text-transform: uppercase; color: var(--steel); margin-top: 3px; line-height: 1.3; }
+
+.user-row{
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  background: var(--concrete-panel); border: 1px solid var(--mortar); padding: 12px 16px;
+}
+.user-nom{ font-family: 'Archivo', sans-serif; font-size: 0.9rem; font-weight: 600; }
+.user-role-select{
+  appearance: none;
+  background: var(--concrete-dark);
+  background-image: linear-gradient(45deg, transparent 50%, var(--steel) 50%), linear-gradient(135deg, var(--steel) 50%, transparent 50%);
+  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  border: 1px solid var(--mortar); color: var(--paper);
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  padding: 7px 28px 7px 10px;
+}
+.user-role-select:focus{ outline: none; border-color: var(--rust); }
+.user-status{ font-family: 'Space Mono', monospace; font-size: 12px; width: 14px; text-align: center; }
+.user-status.ok{ color: var(--success); }
+.user-status.err{ color: var(--error); }
+
+.registrants-table{ width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.82rem; }
+.registrants-table th, .registrants-table td{ text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--mortar); }
+.registrants-table th{ font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; color: var(--steel); }
+
+/* ============================================================
+   BOUTON "CONTACTEZ-NOUS" — c'est un <button>, pas un <a>.
+   S'assure qu'il reprend bien le style CTA quel que soit ce que
+   nav.css cible, plutôt que l'apparence grise par défaut du navigateur.
+   ============================================================ */
+button#nav-contact-btn.nav-cta-outline{
+  appearance: none;
+  background: none;
+  border: 1px solid var(--rust);
+  color: var(--paper);
   font-family: 'Space Mono', monospace;
   font-size: 12px;
-  color: #e8615a;
-  border: 1px solid #e8615a;
-  padding: 10px 12px;
-  background: rgba(232, 97, 90, 0.08);
+  cursor: pointer;
 }
-.form-success{
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  color: var(--safety);
-  border: 1px solid var(--safety);
-  padding: 10px 12px;
-  background: rgba(227, 167, 46, 0.08);
+button#nav-contact-btn.nav-cta-outline:hover{
+  background: var(--rust);
+  color: var(--paper);
 }
 
-@media (max-width: 600px){
-  .gallery-grid{ grid-template-columns: 1fr; padding: 0 6vw 100px; }
-  .fab-add{ right: 16px; bottom: 16px; }
+/* Même correctif pour le bouton Déconnexion : c'est un <button>, il n'hérite
+   pas automatiquement du style des <a class="nav-link"> voisins, ce qui le
+   faisait apparaître décalé dans le menu. */
+button#nav-logout-btn.nav-cta-outline{
+  appearance: none;
+  background: none;
+  border: 1px solid var(--rust);
+  color: var(--paper);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
 }
+button#nav-logout-btn.nav-cta-outline:hover{
+  background: var(--rust);
+  color: var(--paper);
+}
+
+/* ============================================================
+   ZONE DE DANGER (parametres.html)
+   ============================================================ */
+.danger-zone{ border: 1px solid var(--error) !important; padding: 18px 20px; background: rgba(217,88,74,0.06); }
+.danger-zone .section-label{ border: none; padding: 0; margin: 0 0 10px; }
+.danger-zone-text{ font-size: 0.85rem; color: var(--steel); line-height: 1.6; margin-bottom: 16px; }
+.danger-zone .btn-danger{ width: 100%; }
