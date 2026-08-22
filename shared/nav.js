@@ -8,23 +8,8 @@ import { supabase } from './client-supabase.js';
   const links = document.getElementById('nav-links');
 
   if (toggle && links) {
-    // Bouton "Fermer" explicite, injecté en haut du menu mobile —
-    // plus fiable que de compter sur l'animation hamburger → X.
-    if (!document.getElementById('nav-close-btn')) {
-      const closeBtn = document.createElement('button');
-      closeBtn.id = 'nav-close-btn';
-      closeBtn.type = 'button';
-      closeBtn.className = 'nav-close-btn';
-      closeBtn.setAttribute('aria-label', 'Fermer le menu');
-      closeBtn.innerHTML = '✕';
-      closeBtn.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Ouvrir le menu');
-      });
-      links.insertBefore(closeBtn, links.firstChild);
-    }
-
+    // Le bouton hamburger s'anime déjà en X à l'ouverture (voir nav.css) —
+    // pas besoin d'un second bouton de fermeture injecté dans le menu.
     toggle.addEventListener('click', () => {
       const isOpen = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen);
